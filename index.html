@@ -31,10 +31,14 @@
 </div>
 </div>
 </nav>
+<div class="center"><div class="input-search"><input id="input-search-bar" onclick="inputClick()" onkeyup="inputlist()" type="text" placeholder="">
+<div id="course">
+</div>
+</div></div>
+<nav id="content-nav">
 <img id="img-b" src="" alt="">
 <div class="content">
 <div class="background"><img id="background-img" src="/image/world-search-logo-black.webp" alt="Logo"></div>
-<div class="input-search"><input id="input-search-bar" type="text" placeholder=""></div>
 </div>
 <section id="select">
 <ul id="ul"></ul>
@@ -45,6 +49,11 @@ shortcutlist();
 function start() {
 document.getElementById("input-search-bar").setAttribute("placeholder", "Search with "+settings("browser"))
 }
+document.querySelector("#content-nav").addEventListener("click", () => {
+  document.getElementById("course").style = "display: none;"
+  document.getElementById("input-search-bar").style = "border-radius: 10px;";
+});
 </script>
 </body>
+</nav>
 </html>

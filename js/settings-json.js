@@ -1,5 +1,9 @@
 let scl = []
 
 let startSettings = {
-    "browser": "Google"
+    "browser": "Google",
+
+    "courseList": true
 }
+
+let course = []

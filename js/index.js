@@ -1,7 +1,7 @@
 // Enter search
 document.addEventListener("keydown", (event) => {
   var inputempty = true;
-  var inputvalue = document.getElementById("input-search-bar").value;
+  let inputvalue = document.getElementById("input-search-bar").value;
   if (inputvalue == "") {
     inputempty = true;
   } else {
@@ -10,32 +10,36 @@ document.addEventListener("keydown", (event) => {
   const keyCode = event.key;
   if (event.keyCode == 13 && inputempty == false) {
     let value = [inputvalue.replace(/ /g, "+")];
-    var link = "";
-
-    if (settings("browser") == "Google") {
-      link = "https://google.com/search?q=";
-    }
-
-    if (settings("browser") == "Bing") {
-      link = "https://bing.com/search?q=";
-    }
-
-    if (settings("browser") == "Ecosia") {
-      link = "https://ecosia.org/search?q=";
-    }
-
-    if (settings("browser") == "Duckduckgo") {
-      link = "https://google.com/";
-    }
-
-    if (settings("browser") == "Baidu") {
-      link = "https://baidu.com/s?ie=utf-8&f=8&rsv_bp=1&rsv_idx=1&tn=baidu&wd=";
-    }
-
-    window.location.href = link + value;
+    let coursevalue = inputvalue.substr(0, inputvalue.length);
+    courseList(coursevalue);
+    window.location.href = browser() + value;
     document.getElementById("input-search-bar").value = "";
   }
 });
+
+function browser() {
+  if (settings("browser") == "Google") {
+    url = "https://google.com/search?q=";
+  }
+
+  if (settings("browser") == "Bing") {
+    url = "https://bing.com/search?q=";
+  }
+
+  if (settings("browser") == "Ecosia") {
+    url = "https://ecosia.org/search?q=";
+  }
+
+  if (settings("browser") == "Duckduckgo") {
+    url = "https://google.com/";
+  }
+
+  if (settings("browser") == "Baidu") {
+    url = "https://baidu.com/s?ie=utf-8&f=8&rsv_bp=1&rsv_idx=1&tn=baidu&wd=";
+  }
+
+  return url;
+}
 
 function removeShortcut(n) {
   document.getElementById("li-" + n).remove();
@@ -49,8 +53,7 @@ function removeShortcut(n) {
   for (let i = n + 1; i < sc.length; ++i) {
     newsc[i - 1] = sc[i];
   }
-  console.log(sc);
-  console.log(newsc);
+
   localStorage.setItem("shortcut", JSON.stringify(newsc));
 }
 
@@ -143,12 +146,15 @@ function scSave() {
 
   if (save == true) {
     var inputName = document.getElementById("box-input-0").value;
-    var inputUrl = document.getElementById("box-input-1").value + "/";
+    var inputUrl = document.getElementById("box-input-1").value;
+    if (inputUrl.split("")[inputUrl.length - 1] == "/") {
+    } else {
+      inputUrl + "/";
+    }
 
     var clearLine = inputUrl.replace("//", "--");
     var endofDomain = clearLine.indexOf("/") + 1;
     var icon = inputUrl.substr(0, endofDomain) + "favicon.ico";
-    console.log(icon);
     testImage(icon);
     function testImage(url) {
       var img = new Image();
@@ -164,7 +170,6 @@ function scSave() {
     }
 
     function saveData(img) {
-      console.log(img);
       sc[sc.length] = { name: [inputName, inputUrl, img] };
       localStorage.setItem("shortcut", JSON.stringify(sc));
       document.getElementById("box-input-0").value = "";
@@ -173,4 +178,105 @@ function scSave() {
       shortcutlist();
     }
   }
+}
+
+function inputClick() {
+  let localStoragecourse = localStorage["course"];
+  let course = JSON.parse(localStoragecourse);
+  var courseToList = 3;
+
+  if (course.length > 10) {
+    courselength = 10;
+    courseToList = 11;
+  } else {
+    courselength = course.length;
+    courseToList = course.length + 1;
+  }
+
+  if (course.length > 0) {
+    document.getElementById("input-search-bar").style =
+      "border-radius: 10px 10px 0px 0px;";
+    document.getElementById("course").style = "display: flex";
+    document.getElementById("course").innerHTML = "";
+
+    // start list
+    for (let i = course.length - 1; course.length - courseToList < i; --i) {
+      document.getElementById("course").innerHTML +=
+        `<a href="` +
+        urlLink(course[i]) +
+        `" class="course-a" id="course-` +
+        i +
+        `">` +
+        course[i] +
+        `</a>`;
+    }
+  }
+}
+
+function inputlist() {
+  let localStoragecourse = localStorage["course"];
+  let course = JSON.parse(localStoragecourse);
+  var input = document.getElementById("input-search-bar").value;
+  var courseToList = 3;
+
+  if (course.length > 10) {
+    courselength = 10;
+    courseToList = 11;
+  } else {
+    courselength = course.length;
+    courseToList = course.length + 1;
+  }
+
+  if (course.length > 0) {
+    // start list
+    if (input == "") {
+      document.getElementById("course").innerHTML = "";
+      for (let i = course.length - 1; course.length - courseToList < i; --i) {
+        document.getElementById("course").innerHTML +=
+          `<a href="` +
+          urlLink(course[i]) +
+          `" class="course-a" id="course-` +
+          i +
+          `">` +
+          course[i] +
+          `</a>`;
+      }
+    } else {
+      for (let i = 0; i < course.length; ++i) {
+        document.getElementById("course").innerHTML = "";
+        document.getElementById("course").style = "display: none;";
+        document.getElementById("input-search-bar").style =
+          "border-radius: 10px;";
+        for (let i = 0; i < courselength; ++i) {
+          if (course[i].indexOf(input) > -1) {
+            document.getElementById("course").style = "display: flex";
+            document.getElementById("input-search-bar").style =
+              "border-radius: 10px 10px 0px 0px;";
+            document.getElementById("course").innerHTML +=
+              `<a href="` +
+              urlLink(course[i]) +
+              `" class="course-a" id="course-` +
+              i +
+              `">` +
+              course[i] +
+              `</a>`;
+          }
+        }
+      }
+    }
+  }
+}
+
+function courseList(value) {
+  if (settings("courselist") == true) {
+    let localStoragecourse = localStorage["course"];
+    let courselist = JSON.parse(localStoragecourse);
+    courselist[courselist.length] = value;
+    localStorage.setItem("course", JSON.stringify(courselist));
+  }
+}
+
+function urlLink(value) {
+  let valueEnd = [value.replace(/ /g, "+")];
+  return browser() + valueEnd;
 }
