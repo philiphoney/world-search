@@ -8,18 +8,11 @@ function storage() {
   let localStorageshortcut = localStorage["shortcut"];
   let localStoragesettings = localStorage["storage-of-settings"];
 
-  var courseStorage = (localStoragecourse.length / 1000).toFixed(3) * 1;
-  var shortcutStorage = (localStorageshortcut.length / 1000).toFixed(3) * 1;
-  var systemStorage = (localStoragesettings.length / 1000).toFixed(3) * 1;
-  var storage = (courseStorage + shortcutStorage + systemStorage).toFixed(3);
-
-  // percent to 5000
-  (storage / 0.5).toFixed(1).replace(".", "") * 1;
-
-  document.getElementById("e-course").innerText = courseStorage + " Bit";
-  document.getElementById("e-shortcut").innerText = shortcutStorage + " Bit";
-  document.getElementById("e-system").innerText = systemStorage + " Bit";
-  document.getElementById("e-used").innerText = storage + " Bit";
+  var storage = (localStoragecourse.length + localStorageshortcut.length + localStoragesettings.length)
+  document.getElementById("e-course").innerText = storagelist(localStoragecourse.length);
+  document.getElementById("e-shortcut").innerText = storagelist(localStorageshortcut.length);
+  document.getElementById("e-system").innerText = storagelist(localStoragesettings.length);
+  document.getElementById("e-used").innerText = storagelist(storage);
 }
 
 function startTheSettings() {
@@ -165,4 +158,30 @@ function setImg() {
   EditSettings("backgroundimage", value);
   console.log(settings("backgroundimage"));
   startTheSettings();
+}
+
+function storagelist(v) {
+  var kb = (v / 1024).toFixed(2) * 1;
+  var mb = (v / 1048576).toFixed(2) * 1;
+  var gb = (v / 1073741824).toFixed(2) * 1;
+  var tb = (v / 1099511627776).toFixed(0) * 1;
+  var output = v+" Byte"
+
+  if (v >= 1024) {
+    output = kb+" KB"
+  }
+
+  if (v >= 1048576) {
+    output = mb+" MB"
+  }
+
+  if (v >= 1073741824) {
+    output = gb+" GB"
+  }
+
+  if (v >= 1099511627776) {
+    output = tb+" TB"
+  }
+
+  return output;
 }
