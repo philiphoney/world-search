@@ -1,0 +1,315 @@
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--background);
+    color: var(--color-text);
+}
+
+#background img {
+  width: 200px;
+}
+
+#background {
+    display: flex;
+}
+
+#image-text {
+    padding-top: 13px;
+    font-size: 25px;
+}
+
+header {
+    position: fixed;
+    width: 100%;
+    background-color:  var(--background);
+    z-index: 10;
+}
+
+header-2 {
+    z-index: 9;
+    padding-top: 52px;
+    position: fixed;
+    width: 100%;
+}
+
+#header-content {
+padding-top: 10px;
+padding-left: 10px;
+  width: 200px;
+  background-color: var(--background);
+}
+
+main {
+    padding-top: 70px;
+    display: flex;
+    justify-content: center;
+}
+
+#main-content {
+    z-index: 0;
+    position: relative;
+    width: 700px;
+    flex-flow: column;
+}
+
+settings-title {
+    font-size: 30px;
+    font-weight: 500;
+    margin-bottom: 50px;
+}
+
+hr {
+    border: 1px solid var(--color-border);
+}
+
+#storage-item div {
+    padding: 3px;
+    border-radius: 5px;
+    color: white;
+}
+
+#storage-item-icon-0 {
+    background-color: #c93c20;
+}
+
+#storage-item-icon-1 {
+    background-color: #0062ff;
+}
+
+#storage-item-icon-2 {
+    background-color: #b8babc;
+}
+
+
+#storage-item {
+    padding-bottom: 0px;
+}
+
+#storage-item span {
+    translate: 0px -25px 0px;
+    font-size: 15px;
+    color: var(--color-text);
+}
+
+.e-model {
+  display: flex;
+  justify-content: end;
+}
+
+#storage-content {
+    padding-top: 10px;
+}
+
+#storage-item-p {
+    position: absolute;
+    translate: 40px -40px 10px;
+}
+
+#used {
+    padding-top: 30px;
+}
+
+.on {
+    -moz-transition: 0.5s;
+    transition: 0.5s;
+    color: var(--color-activation);
+  font-variation-settings:
+  'FILL' 1,
+  'wght' 500,
+  'GRAD' 0,
+  'opsz' 48
+}
+
+.off {
+  -moz-transition: 0.5s;
+  transition: 0.5s;
+  color: var(--color-button);
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 500,
+  'GRAD' 0,
+  'opsz' 48
+}
+
+.a-question a {
+    text-decoration: none;
+    display: flex;
+    text-align: end;
+    justify-content: end;
+    translate: 00px -41px 0px;
+}
+
+.a-question-no-text a {
+    text-decoration: none;
+    display: flex;
+    text-align: end;
+    justify-content: end;
+    translate: 00px -25px 0px;
+}
+
+
+.question-title {
+    font-size: 20px;
+}
+
+.question-text {
+    color: var(--color-text-2);
+}
+
+
+#about-content {
+    padding: 15px;
+    background-color: var(--background-2);
+    border-radius: 10px;
+    margin-top: 30px;
+}
+
+#about-content p {
+    padding-top: 10px;
+}
+
+#reset {
+    text-decoration: none;
+    color: #f95050;
+}
+
+#reset a:hover span  {
+    text-decoration: none;
+}
+
+
+
+#reset span {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #f95050;
+    margin-left: 10px;
+}
+
+
+#reset span:hover {
+    background-color: #f95050;
+    color: white;
+}
+
+#censel {
+    padding: 5px;
+    border-radius: 5px;
+    background-color: var(--color-button);
+    border: 1px solid #f9505000;
+    margin-left: 10px;
+}
+
+
+.theme-design {
+    display: flex;
+    justify-content: center;
+}
+
+.theme-design img {
+    width: 100px;
+}
+
+.theme-design a {
+   margin: 5px;
+   border-radius: 10px;
+   border: 3px solid #00000000;
+}
+
+.theme-design a:hover  {
+    margin: 5px;
+    border-radius: 10px;
+ }
+
+.theme-title {
+    padding-top: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.theme-title div {
+   padding-left: 40px;
+   padding-right: 40px;
+}
+
+#light {
+    background-color: #ffffff
+}
+
+#dark {
+    background-color: #3f3f3f;
+}
+
+#select-engine {
+    background-color: var(--color-activation);
+    border-radius: 5px;
+    border: none;
+    padding: 5px;
+}
+
+.text-title {
+    font-size: 20px;
+    padding-bottom: 20px;
+}
+
+.ac button {
+    margin: 10px;
+    margin-left: 0px;
+    padding: 10px;
+    border-radius: 100%;
+    border: 0px;
+}
+
+#color-red {
+    background-color: #f95050;
+}
+
+#color-blue {
+    background-color: #00c3ffd1;
+}
+
+#color-orange {
+    background-color: #fd812e;
+}
+
+#color-red {
+    background-color: #f95050;
+}
+
+#color-yellow {
+    background-color: #ffd344;
+}
+
+#color-purple {
+    background-color: #c339ff;
+}
+
+#color-green {
+    background-color: #80f950;
+}
+
+#color-grey {
+    background-color: #a5a5a5;
+}
+
+#chl-reset {
+    color: var(--color-text);
+}
+
+#chl-reset span {
+    padding: 5px;
+    border-radius: 5px;
+    background-color: var(--color-button);
+}
+
+#chl-reset span:hover {
+    padding: 5px;
+    border-radius: 5px;
+    background-color: var(--color-activation);
+}
+
+
+
+#content-add-wallpaper {
+    display: none;
+}

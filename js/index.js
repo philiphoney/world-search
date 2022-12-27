@@ -31,7 +31,7 @@ function browser() {
   }
 
   if (settings("browser") == "Duckduckgo") {
-    url = "https://google.com/";
+    url = "https://duckduckgo.com/?q=";
   }
 
   if (settings("browser") == "Baidu") {
@@ -93,17 +93,11 @@ function shortcutlist() {
   ).innerHTML += `<li><div class="banner"><a class="banner-a" id="href-0" href="##" onclick="addshortcut()"><div class="material-symbols-outlined">add_circle</div></a></div><span>Shortcut</span></li>`;
 }
 
-function test() {
-  document.getElementById("title").innerText = "Neuer Tab";
-  document.getElementById("icon").href = "./image/world-search-icon-white.webp";
-}
-
 function dark() {
-  document.getElementById("background-img").src =
-    "./image/world-search-logo-white.webp";
+  document.getElementById("background-img").src ="./image/world-search-logo-white.webp";
   document.getElementById(
     "body"
-  ).style = `--color-input-border: #3f3f3f; --background: #262731; --color-text: #ffffff;  --color-activating-elements: #2f313e59;  --color-button: #484747;`;
+  ).style = `--color-activation:`+settings("activation")[1]+`; --color-input-border: #3f3f3f;  --background: #212121; --color-text: #ffffff;  --color-activating-elements: #2f313e59;  --color-button: #484747;   --color-border: #808080;   --background-2: #3a3a3a;`;
 }
 
 // add shortcut
@@ -280,3 +274,12 @@ function urlLink(value) {
   let valueEnd = [value.replace(/ /g, "+")];
   return browser() + valueEnd;
 }
+
+
+window.addEventListener('scroll', () => {
+  if (window.pageYOffset >= 50) {
+    document.getElementsByClassName("input-search")[0].style.display = "none";
+  } else {
+    document.getElementsByClassName("input-search")[0].style.display = "block";
+  }
+});
