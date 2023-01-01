@@ -21,7 +21,7 @@ body {
 header {
     position: fixed;
     width: 100%;
-    background-color:  var(--background);
+    background-color: var(--background);
     z-index: 10;
 }
 
@@ -33,6 +33,7 @@ header-2 {
 }
 
 #header-content {
+    display: none;
 padding-top: 10px;
 padding-left: 10px;
   width: 200px;
@@ -168,18 +169,18 @@ hr {
     padding-top: 10px;
 }
 
-#reset {
+.reset {
     text-decoration: none;
     color: #f95050;
 }
 
-#reset a:hover span  {
+.reset a:hover span  {
     text-decoration: none;
 }
 
 
 
-#reset span {
+.reset span {
     padding: 5px;
     border-radius: 5px;
     border: 1px solid #f95050;
@@ -187,7 +188,7 @@ hr {
 }
 
 
-#reset span:hover {
+.reset span:hover {
     background-color: #f95050;
     color: white;
 }
@@ -200,6 +201,9 @@ hr {
     margin-left: 10px;
 }
 
+#e-reset-2 {
+    display: none;
+}
 
 .theme-design {
     display: flex;

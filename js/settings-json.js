@@ -2,16 +2,17 @@ let course = []
 let scl = []
 
 let = system = {
-    "version": "v1.1.0-Beta.4"
+    "version": "v1.1.1"
 }
 
 let startSettings = {
     "browser": "Google",
-    "courseList": true,
-    "decreaseSearchHistoryLog": true,
+    "courselist": true,
+    "decreasesearchhistorylog": true,
     "theme": "light",
     "logo": true,
     "activation": ["blue","#00c3ffd1;"],
     "backgroundimage": "",
-    "backgroundimageboolean": false
-} 
+    "backgroundimageboolean": false,
+    "#n": null
+}

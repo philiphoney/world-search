@@ -15,6 +15,106 @@ function storage() {
   document.getElementById("e-used").innerText = storagelist(storage);
 }
 
+// Button
+var lightButton = document.getElementById("light");
+var darkButton = document.getElementById("dark");
+var logoremoveButton = document.getElementById("logoremove");
+var wallpaperButton = document.getElementById("wallpaper-toggle");
+var setImageButton = document.getElementById("set-img");
+var selectEngineButton = document.getElementById("select-engine");
+var shlButton = document.getElementById("shl-button");
+var chlButton = document.getElementById("chl-reset");
+var resetButton = document.getElementById("reset");
+var resetFullButton = document.getElementById("reset-1");
+var censelButton = document.getElementById("censel");
+
+
+// Butten Color
+var colorRedButton = document.getElementById("color-red");
+var colorBlueButton = document.getElementById("color-blue");
+var colorOrangeButton = document.getElementById("color-orange");
+var colorYellowButton = document.getElementById("color-yellow");
+var colorPurpleButton = document.getElementById("color-purple");
+var colorGreenButton = document.getElementById("color-green");
+var colorGreyButton = document.getElementById("color-grey");
+
+// Button color action
+colorRedButton.addEventListener("click", (event) => {
+  activation("red", "#f95050");
+});
+
+colorBlueButton.addEventListener("click", (event) => {
+  activation("blue", "#00c3ffd1");
+});
+
+colorOrangeButton.addEventListener("click", (event) => {
+  activation("orange", "#fd812e");
+});
+
+colorYellowButton.addEventListener("click", (event) => {
+  activation("yellow", "#ffd344");
+});
+
+colorPurpleButton.addEventListener("click", (event) => {
+  activation("purple", "#c339ff");
+});
+
+colorGreenButton.addEventListener("click", (event) => {
+  activation("green", "#80f950");
+});
+
+colorGreyButton.addEventListener("click", (event) => {
+  activation("grey", "#a5a5a5");
+});
+
+// Button action
+
+lightButton.addEventListener("click", (event) => {
+  themeLight();
+});
+
+darkButton.addEventListener("click", (event) => {
+  themeDark();
+});
+
+logoremoveButton.addEventListener("click", (event) => {
+  logoRemove();
+});
+
+wallpaperButton.addEventListener("click", (event) => {
+  wallpaper();
+});
+
+setImageButton.addEventListener("click", (event) => {
+  setImg();
+});
+
+selectEngineButton.addEventListener("change", (event) => {
+  selectEngine();
+});
+
+shlButton.addEventListener("click", (event) => {
+  shl();
+});
+
+chlButton.addEventListener("click", (event) => {
+  chl();
+});
+
+resetButton.addEventListener("click", (event) => {
+  reset0()
+});
+
+censelButton.addEventListener("click", (event) => {
+  resetCensel();
+});
+
+resetFullButton.addEventListener("click", (event) => {
+  reset1();
+});
+
+document.getElementById("c").innerHTML = "© Copyright "+(new Date().getFullYear())+" World Search"
+
 function startTheSettings() {
   document.getElementsByClassName("engine")[0].innerHTML = settings("browser");
   if (settings("decreasesearchhistorylog") == true) {
@@ -85,15 +185,14 @@ function shl() {
 }
 
 function resetCensel() {
-  document.getElementById(
-    "e-reset"
-  ).innerHTML = `<a id="reset" href="##" onclick="reset0()"><span href="">Reset to default</span></a>`;
+  document.getElementById("e-reset").style = "display: block"
+  document.getElementById("e-reset-2").style = "display: none"
 }
 
 function reset0() {
-  document.getElementById(
-    "e-reset"
-  ).innerHTML = `<a id="reset" href="##"><span href="" onclick="reset1()">Reset to default</span><span id="censel" onclick="resetCensel()" href="##" >Censel</span></a>`;
+  document.getElementById("e-reset").style = "display: none"
+  document.getElementById("e-reset-2").style = "display: block"
+
 }
 
 function reset1() {
@@ -104,7 +203,6 @@ function reset1() {
 function selectEngine() {
   var element = document.getElementById("select-engine");
   var value = element.options[element.selectedIndex].value;
-  console.log(value);
   EditSettings("browser", value);
   startTheSettings();
 }
@@ -156,7 +254,6 @@ function chl() {
 function setImg() {
   var value = document.getElementById("image-input-value").value;
   EditSettings("backgroundimage", value);
-  console.log(settings("backgroundimage"));
   startTheSettings();
 }
 
@@ -184,4 +281,16 @@ function storagelist(v) {
   }
 
   return output;
+}
+
+// End
+
+document.getElementById("v").innerText = system.version;
+bib();
+function bib() {
+if (settings("backgroundimageboolean") == true) {
+      document.getElementById("content-add-wallpaper").style = "display: block"
+  } else {
+    document.getElementById("content-add-wallpaper").style = "display: none"
+  }
 }

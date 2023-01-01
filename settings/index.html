@@ -13,7 +13,6 @@
    <!-- JS -->
    <script src="../js/settings-json.js"></script>
    <script src="../js/storage.js"></script>
-   <script src="../js/settings.js"></script>
 </head>
 <body id="body">
 <header>
@@ -30,8 +29,8 @@
 <section id="design">
 <settings-title>Design</settings-title>
 <div class="theme-design">
-<a id="light" href="" onclick="themeLight()"><img src="../image/dark-thtme.webp" alt=""></a>
-<a id="dark" href="" onclick="themeDark()"><img src="../image/light-thtme.webp" alt=""></a>
+<a id="light" href=""><img src="../image/dark-thtme.webp" alt=""></a>
+<a id="dark" href=""><img src="../image/light-thtme.webp" alt=""></a>
 </div>
 <div class="theme-title">
 <div>Light</div>
@@ -39,26 +38,26 @@
 </div>
 <div class="a-question-no-text" style="margin-top: 50px;">
 <div class="question-title">Turn off the logo on the home screen</div>
-<a href="##" onclick="logoRemove()"><span id="logoRemove" class="material-symbols-outlined off" style="font-size: 40px;">toggle_on</span></a>
+<a href="##" id="logoremove"><span id="logoRemove" class="material-symbols-outlined off" style="font-size: 40px;">toggle_on</span></a>
 </div>
 <div class="text-title">Activation colors</div>
 <div class="ac">
-<button class="color" id="color-red" onclick="activation('red', '#f95050')"></button>
-<button class="color" id="color-blue" onclick="activation('blue', '#00c3ffd1;')"></button>
-<button class="color" id="color-orange" onclick="activation('orange', '#fd812e')"></button>
-<button class="color" id="color-yellow" onclick="activation('yellow', '#ffd344')"></button>
-<button class="color" id="color-purple" onclick="activation('purple', '#c339ff')"></button>
-<button class="color" id="color-green" onclick="activation('green', '#80f950')"></button>
-<button class="color" id="color-grey" onclick="activation('grey', '#a5a5a5')"></button>
+<button class="color" id="color-red"></button>
+<button class="color" id="color-blue"></button>
+<button class="color" id="color-orange"></button>
+<button class="color" id="color-yellow"></button>
+<button class="color" id="color-purple"></button>
+<button class="color" id="color-green"></button>
+<button class="color" id="color-grey"></button>
 </div>
 <div class="text-title" style="padding-top: 20px;" >Background Image</div>
 <div class="a-question-no-text" style="margin-top: 20px;">
 <div class="question-title">Show wallpaper</div>
-<a href="##" onclick="wallpaper()"><span id="wallpaper" class="material-symbols-outlined off" style="font-size: 40px;">toggle_on</span></a>
+<a href="##" id="wallpaper-toggle"><span id="wallpaper" class="material-symbols-outlined off" style="font-size: 40px;">toggle_on</span></a>
 </div>
 <div id="content-add-wallpaper">
 <div id="image-input"><input id="image-input-value" type="text"></div>
-<div id="" style="margin-top: 20px;"><a id="set-img" href="##" onclick="setImg()"><span href="">Save Image</span></a></div>
+<div id="" style="margin-top: 20px;"><a id="set-img" href="##"><span href="">Save Image</span></a></div>
 </div>
 <hr style="margin-top: 30px;">
 </section>
@@ -68,7 +67,7 @@
 <div class="a-question-no-text" style="padding-top: 20px;">
 <div class="question-title">Search engine</div>
 <a id="e-se">
-<select name="Search engine" id="select-engine" onchange="selectEngine()"> 
+<select name="Search engine" id="select-engine"> 
 <option class="engine">Subjects</option>
 <option value="Google">Google</option>
 <option value="Bing">Bing</option>
@@ -92,11 +91,11 @@
 <div class="a-question">
 <div class="question-title">Decrease Search History Log</div>
 <div class="question-text">⚠️ This setting can cause leaks when off</div>
-<a href="##" onclick="shl()"><span id="shl" class="material-symbols-outlined off" style="font-size: 40px;">toggle_on</span></a>
+<a href="##" id="shl-button"><span id="shl" class="material-symbols-outlined off" style="font-size: 40px;">toggle_on</span></a>
 </div>
 <div class="a-question-no-text" style="padding-top: 0px;">
 <div class="question-title">Clear history log</div>
-<div id=""><a id="chl-reset" href="##" onclick="chl()"><span href="">Clear history log</span></a></div>
+<div id=""><a id="chl-reset" href="##"><span href="">Clear history log</span></a></div>
 </div>
 <hr style="margin-top: 40px;">
 </section>
@@ -105,19 +104,8 @@
 <settings-title>About World Search</settings-title>
 <div id="about-content">
 <p id="v"></p>
-<p id="c">© Copyright <script>document.write(new Date().getFullYear())</script> World Search</p>
+<p id="c"></p>
 </div>
-<script>
-document.getElementById("v").innerText = system.version;
-bib();
-function bib() {
-if (settings("backgroundimageboolean") == true) {
-      document.getElementById("content-add-wallpaper").style = "display: block"
-  } else {
-    document.getElementById("content-add-wallpaper").style = "display: none"
-  }
-}
-</script>
 <hr style="margin-top: 60px;">
 </section>
 
@@ -125,13 +113,13 @@ if (settings("backgroundimageboolean") == true) {
 <settings-title>Danger Zone</settings-title>
 <div class="a-question-no-text" style="padding-top: 20px;">
 <div class="question-title">Reset to default settings</div>
-<div id="e-reset"><a id="reset" href="##" onclick="reset0()"><span href="">Reset to default</span></a></div>
+<div id="e-reset"><a id="reset" class="reset" href="##"><span href="">Reset to default</span></a></div>
+<div id="e-reset-2"><a class="reset" href="##"><span id="reset-1" href="">Reset to default</span><span id="censel" href="##" >Censel</span></a></div>
 </div>
 </section>
-
 </div>
 </main>
-<script>
-</script>
+<a id="test" style="display: none;" href=""></a>
+<script src="../js/settings.js"></script>
 </body>
 </html>

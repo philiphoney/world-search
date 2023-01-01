@@ -42,6 +42,7 @@ function browser() {
 }
 
 function removeShortcut(n) {
+  n = (n*1)
   document.getElementById("li-" + n).remove();
   let localStorageshortcut = localStorage["shortcut"];
   let sc = JSON.parse(localStorageshortcut);
@@ -57,10 +58,21 @@ function removeShortcut(n) {
   localStorage.setItem("shortcut", JSON.stringify(newsc));
 }
 
+// Button
+var saveButton = document.getElementById("button-0");
+var cancelButton = document.getElementById("button-1");
+var input = document.getElementById("input-search-bar");
+var addshortcutButton;
+var removeButton;
+
+var shortcutL = 0
+
+
 // Shortcut list
 function shortcutlist() {
   let localStorageshortcut = localStorage["shortcut"];
   let sc = JSON.parse(localStorageshortcut);
+  shortcutL = sc.length;
   document.getElementById("ul").innerHTML = "";
 
   for (let i = 0; i < sc.length; ++i) {
@@ -73,9 +85,9 @@ function shortcutlist() {
       i +
       `">
         <div class="banner">
-        <a id="remove" href="##" onclick="removeShortcut(` +
+        <a id="remove" href="#n` +
       i +
-      `)" class="material-symbols-outlined banner-icon">bookmark_remove</a>
+      `" class="material-symbols-outlined banner-icon">bookmark_remove</a>
         <a class="banner-a" id="href-0" href="` +
       sc[i].name[1] +
       `">
@@ -90,14 +102,43 @@ function shortcutlist() {
   }
   document.getElementById(
     "ul"
-  ).innerHTML += `<li><div class="banner"><a class="banner-a" id="href-0" href="##" onclick="addshortcut()"><div class="material-symbols-outlined">add_circle</div></a></div><span>Shortcut</span></li>`;
+  ).innerHTML += `<li><div class="banner"><a class="banner-a" id="addS" href="##"><div class="material-symbols-outlined">add_circle</div></a></div><span>Shortcut</span></li>`;
+
+  addshortcutButton = document.getElementById("addS");
+  addshortcutButton.addEventListener("click", (event) => {
+    addshortcut();
+  });
+
+  loopstart1();
+}
+function loopstart1() {
+  setTimeout(time_evend, 300);
+  function time_evend() {
+    hreftest();
+    loopstart1();
+  }
+}
+
+var theendN = null;
+function hreftest() {
+  let localStorageshortcut = localStorage["shortcut"];
+  let sc = JSON.parse(localStorageshortcut);
+  shortcutL = sc.length;
+  var liveEnd = location.href.indexOf("#n");
+  if (liveEnd > 0) {
+    theendN = location.href.substr(liveEnd + 2, location.href.length)*1;
+    removeShortcut(theendN);
+    location.href = ""
+  }
 }
 
 function dark() {
-  document.getElementById("background-img").src ="./image/world-search-logo-white.webp";
-  document.getElementById(
-    "body"
-  ).style = `--color-activation:`+settings("activation")[1]+`; --color-input-border: #3f3f3f;  --background: #212121; --color-text: #ffffff;  --color-activating-elements: #2f313e59;  --color-button: #484747;   --color-border: #808080;   --background-2: #3a3a3a;`;
+  document.getElementById("background-img").src =
+    "./image/world-search-logo-white.webp";
+  document.getElementById("body").style =
+    `--color-activation:` +
+    settings("activation")[1] +
+    `; --color-input-border: #3f3f3f;  --background: #212121; --color-text: #ffffff;  --color-activating-elements: #2f313e59;  --color-button: #484747;   --color-border: #808080;   --background-2: #3a3a3a;`;
 }
 
 // add shortcut
@@ -127,11 +168,15 @@ function addshortcut() {
   }
 }
 
-function scCancel() {
+saveButton.addEventListener("click", (event) => {
+  scSave();
+});
+
+cancelButton.addEventListener("click", (event) => {
   document.getElementById("box-input-0").value = "";
   document.getElementById("box-input-1").value = "";
   document.getElementById("opne-nev").style = "display: none";
-}
+});
 
 function scSave() {
   let localStorageshortcut = localStorage["shortcut"];
@@ -173,6 +218,14 @@ function scSave() {
     }
   }
 }
+
+input.addEventListener("click", (event) => {
+  inputClick();
+});
+
+input.addEventListener("keyup", (event) => {
+  inputlist();
+});
 
 function inputClick() {
   let localStoragecourse = localStorage["course"];
@@ -275,11 +328,45 @@ function urlLink(value) {
   return browser() + valueEnd;
 }
 
-
-window.addEventListener('scroll', () => {
+window.addEventListener("scroll", () => {
   if (window.pageYOffset >= 50) {
     document.getElementsByClassName("input-search")[0].style.display = "none";
   } else {
     document.getElementsByClassName("input-search")[0].style.display = "block";
   }
+});
+
+start();
+shortcutlist();
+courseLow();
+function start() {
+  if (settings("theme") == "dark") {
+    dark();
+    document.getElementById("icon").href =
+      "./image/world-search-icon-white.webp";
+  } else {
+    document.getElementById("body").style =
+      `--color-activation:` + settings("activation")[1] + `;`;
+  }
+
+  if (settings("logo") == false) {
+    document.getElementById("background-img").style = "display: none";
+    document.getElementsByClassName("content")[0].style.paddingTop = "252px";
+  }
+
+  if (settings("backgroundimage") == "") {
+  } else {
+    if (settings("backgroundimageboolean")) {
+      document.getElementById("wallpaper-image").style =
+        "background-image: url(" + settings("backgroundimage") + ")";
+    }
+  }
+
+  document
+    .getElementById("input-search-bar")
+    .setAttribute("placeholder", "Search with " + settings("browser"));
+}
+document.querySelector("#content-nav").addEventListener("click", () => {
+  document.getElementById("course").style = "display: none;";
+  document.getElementById("input-search-bar").style = "border-radius: 10px;";
 });

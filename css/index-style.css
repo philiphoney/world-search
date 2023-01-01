@@ -149,6 +149,8 @@ html {
 .banner-icon {
   padding-left: 12px;
   position: absolute;
+
+  
   z-index: 1;
 }
 

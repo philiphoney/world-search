@@ -13,7 +13,6 @@
     <!-- js -->
     <script src="./js/settings-json.js"></script>
     <script src="./js/storage.js"></script>
-    <script src="./js/index.js"></script>
 </head>
 <body id="body">
 <div class="wallpaper" id="wallpaper-image" >
@@ -26,14 +25,14 @@
 <div class="box-name">URL</div>
 <input id="box-input-1" type="text">
 <div id="button">
-<a href="##" id="button-1" onclick="scCancel()">Cancel</a>
-<a href="##" id="button-0" onclick="scSave()">Save</a>
+<a href="##" id="button-1" value="1">Cancel</a>
+<a href="##" id="button-0">Save</a>
 </div>
 </div>
 </div>
 </nav>
 <a id="settings-a" href="/settings/index.html"><div id="settings"><span class="material-symbols-outlined">settings</span></a></div>
-<div class="center"><div class="input-search"><input id="input-search-bar" onclick="inputClick()" onkeyup="inputlist()" type="text" placeholder="">
+<div class="center"><div class="input-search"><input id="input-search-bar" type="text" placeholder="">
 <div id="course">
 </div>
 </div></div>
@@ -45,40 +44,7 @@
 <section id="select">
 <ul id="ul"></ul>
 </section>
-<script>
-start();
-shortcutlist();
-courseLow();
-function start() {
-if (settings("theme") == "dark") {
-dark();
-document.getElementById("icon").href = "./image/world-search-icon-white.webp";
-} else {
-    document.getElementById(
-    "body"
-  ).style = `--color-activation:`+settings("activation")[1]+`;`;
-}
-
-if (settings("logo") == false) {
-document.getElementById("background-img").style = "display: none"
-document.getElementsByClassName("content")[0].style.paddingTop = "252px"
-}
-
-
-console.log(settings("backgroundimageboolean"))
-
-if (settings("backgroundimage") == "") {} else {
-if (settings("backgroundimageboolean")) {
-    document.getElementById("wallpaper-image").style = "background-image: url("+settings("backgroundimage")+")"
-}}
-
-document.getElementById("input-search-bar").setAttribute("placeholder", "Search with "+settings("browser"))
-}
-document.querySelector("#content-nav").addEventListener("click", () => {
-document.getElementById("course").style = "display: none;"
-document.getElementById("input-search-bar").style = "border-radius: 10px;";
-});
-</script>
+<script src="./js/index.js"></script>
 </body>
 </nav>
 </html>

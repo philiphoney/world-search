@@ -1,0 +1,26 @@
+{
+  "manifest_version": 2,
+  "name": "World Search",
+  "version": "1.1.1",
+  "description": "World Search is actually structured like the new tab. You can search with five searches or add unlimited shortcuts. Topics",
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  },
+
+"chrome_url_overrides": {
+    "newtab": "index.html"
+},
+
+"options_ui": {
+  "page": "./settings/index.html"
+},
+
+"background": {
+  "scripts": ["/js/settings-json.js", "js/storage.js", "js/index.js", "js/settings.js"]
+},
+
+"content_security_policy": "script-src 'self' 'wasm-unsafe-eval'"
+
+}

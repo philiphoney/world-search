@@ -13,10 +13,13 @@ if (localStorage["course"] != null) {
   localStorage.setItem("course", JSON.stringify(course));
 }
 
-
 function settings(value) {
   let localStorageSettings = localStorage["storage-of-settings"];
   let settings = JSON.parse(localStorageSettings);
+
+  if (settings[value] == undefined) {
+    newSettings(value);
+  }
 
   if (value == "browser") {
     return settings.browser;
@@ -27,7 +30,7 @@ function settings(value) {
   }
 
   if (value == "decreasesearchhistorylog") {
-    return settings.decreaseSearchHistoryLog;
+    return settings.decreasesearchhistorylog;
   }
 
   if (value == "theme") {
@@ -48,6 +51,14 @@ function settings(value) {
 
   if (value == "backgroundimageboolean") {
     return settings.backgroundimageboolean;
+  }
+
+  if (value == "#n") {
+    return settings["#n"];
+  }
+
+  if (value == "version") {
+    return settings.version;
   }
 }
 
@@ -94,8 +105,22 @@ function EditSettings(value, newValue, newLink) {
     settings.backgroundimageboolean = newValue;
   }
 
+  if (value == "#n") {
+    settings["#n"] = newValue;
+  }
+
   localStorage.setItem("storage-of-settings", JSON.stringify(settings));
 }
+
+function newSettings(value) {
+  let localStorageSettings = localStorage["storage-of-settings"];
+  let settingsJson = JSON.parse(localStorageSettings);
+  settingsJson[value] = startSettings[value];
+  console.log(value)
+  localStorage.setItem("storage-of-settings", JSON.stringify(settingsJson));
+  settings(value);
+}
+
 
 function courseLow() {
   let localStoragecourse = localStorage["course"];
@@ -110,4 +135,3 @@ function courseLow() {
     localStorage.setItem("course", JSON.stringify(newcourse));
   }
 }
-
