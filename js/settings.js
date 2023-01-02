@@ -8,7 +8,7 @@ function storage() {
   let localStorageshortcut = localStorage["shortcut"];
   let localStoragesettings = localStorage["storage-of-settings"];
 
-  var storage = (localStoragecourse.length + localStorageshortcut.length + localStoragesettings.length)
+  var storage = (localStoragecourse.length + localStorageshortcut.length + localStoragesettings.length);
   document.getElementById("e-course").innerText = storagelist(localStoragecourse.length);
   document.getElementById("e-shortcut").innerText = storagelist(localStorageshortcut.length);
   document.getElementById("e-system").innerText = storagelist(localStoragesettings.length);
@@ -68,7 +68,6 @@ colorGreyButton.addEventListener("click", (event) => {
 });
 
 // Button action
-
 lightButton.addEventListener("click", (event) => {
   themeLight();
 });

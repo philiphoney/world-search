@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "World Search",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "World Search is actually structured like the new tab. You can search with five searches or add unlimited shortcuts. Topics",
   "icons": {
     "16": "icon16.png",

@@ -26,7 +26,7 @@ function settings(value) {
   }
 
   if (value == "courselist") {
-    return settings.courseList;
+    return settings.courselist;
   }
 
   if (value == "decreasesearchhistorylog") {
