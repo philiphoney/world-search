@@ -8,11 +8,28 @@ document.addEventListener("keydown", (event) => {
     inputempty = false;
   }
   const keyCode = event.key;
-  if (event.keyCode == 13 && inputempty == false) {
+  if (event.keyCode == 13 && !inputempty) {
     let value = [inputvalue.replace(/ /g, "+")];
     let coursevalue = inputvalue.substr(0, inputvalue.length);
-    courseList(coursevalue);
-    window.location.href = browser() + value;
+    var length = 80;
+    if (coursevalue.length > length) {
+      coursevalue = coursevalue.substr(0, length) + "...";
+    }
+    if (Searchtechnology(inputvalue) == false) {
+      window.location.href = browser() + value;
+      courseList(coursevalue);
+    } else {
+      for (let i = Searchtechnology(inputvalue).length - 1; i > -1; --i) {
+        if (Searchtechnology(inputvalue).length == 1) {
+          window.location.href = Searchtechnology(inputvalue)[i];
+        } else {
+          window.open(Searchtechnology(inputvalue)[i], '_blank');
+        }
+      }
+      if (Searchtechnology(inputvalue).length == 1) {
+        courseList(inputvalue);
+      }
+    }
     document.getElementById("input-search-bar").value = "";
   }
 });
@@ -38,11 +55,35 @@ function browser() {
     url = "https://baidu.com/s?ie=utf-8&f=8&rsv_bp=1&rsv_idx=1&tn=baidu&wd=";
   }
 
+  if (settings("browser") == "Yandex") {
+    url = "https://yandex.com/search/?text=";
+  }
+
+  if (settings("browser") == "Ask") {
+    url = "https://www.ask.com/web?q=";
+  }
+
+  if (settings("browser") == "Search Brave") {
+    url = "https://search.brave.com/search?q=";
+  }
+
+  if (settings("browser") == "Wikipedia") {
+    url = "https://de.wikipedia.org/wiki/";
+  }
+
+  if (settings("browser") == "Ebay") {
+    url = "https://www.ebay.de/sch/i.html?_nkw=";
+  }
+
+  if (settings("browser") == "Amazon") {
+    url = "https://www.amazon.com/s?k=";
+  }
+
   return url;
 }
 
 function removeShortcut(n) {
-  n = (n*1)
+  n = n * 1;
   document.getElementById("li-" + n).remove();
   let localStorageshortcut = localStorage["shortcut"];
   let sc = JSON.parse(localStorageshortcut);
@@ -65,33 +106,42 @@ var input = document.getElementById("input-search-bar");
 var addshortcutButton;
 var removeButton;
 
-var shortcutL = 0
-
+var shortcutL = 0;
 
 // Shortcut list
 function shortcutlist() {
   let localStorageshortcut = localStorage["shortcut"];
   let sc = JSON.parse(localStorageshortcut);
+  var removeIcon = ""
   shortcutL = sc.length;
   document.getElementById("ul").innerHTML = "";
+  if (!settings("remove icon")) {
+    removeIcon = "display: none"
+  } else {
+   removeIcon = ""
+  }
 
   for (let i = 0; i < sc.length; ++i) {
     var title = sc[i].name[0];
+    var imageID = ""
     if (title.length > 7) {
       title = title.substr(0, 7) + "...";
+    }
+    if (sc[i].name[2] == "./image/globus-64.png" && settings("theme") == "dark") {
+      imageID = "light-image"
     }
     document.getElementById("ul").innerHTML +=
       `<li id="li-` +
       i +
       `">
         <div class="banner">
-        <a id="remove" href="#n` +
+        <a id="remove" style="`+removeIcon+`" href="#n` +
       i +
       `" class="material-symbols-outlined banner-icon">bookmark_remove</a>
         <a class="banner-a" id="href-0" href="` +
       sc[i].name[1] +
       `">
-        <img src="` +
+        <img id="`+imageID+`" src="` +
       sc[i].name[2] +
       `" alt="">
         </a>
@@ -126,9 +176,9 @@ function hreftest() {
   shortcutL = sc.length;
   var liveEnd = location.href.indexOf("#n");
   if (liveEnd > 0) {
-    theendN = location.href.substr(liveEnd + 2, location.href.length)*1;
+    theendN = location.href.substr(liveEnd + 2, location.href.length) * 1;
     removeShortcut(theendN);
-    location.href = ""
+    location.href = "";
   }
 }
 
@@ -159,7 +209,7 @@ function addshortcut() {
     if (inputUrl.length > 0 && inputName.length > 0) {
       save = true;
       document.getElementById("button-0").style =
-        "background-color: var(--color-activation);";
+        "background-color: var(--color-activation); border: 2px solid var(--color-activation);";
     } else {
       document.getElementById("button-0").style =
         "background-color: var(--color-button);";
@@ -176,6 +226,8 @@ cancelButton.addEventListener("click", (event) => {
   document.getElementById("box-input-0").value = "";
   document.getElementById("box-input-1").value = "";
   document.getElementById("opne-nev").style = "display: none";
+  document.getElementById("button").style = "margin-top: 20px";
+  document.getElementById("error").innerText = "";
 });
 
 function scSave() {
@@ -183,42 +235,49 @@ function scSave() {
   let sc = JSON.parse(localStorageshortcut);
   var scimage = "";
 
-  if (save == true) {
+  if (save) {
     var inputName = document.getElementById("box-input-0").value;
     var inputUrl = document.getElementById("box-input-1").value;
-    if (inputUrl.split("")[inputUrl.length - 1] == "/") {
+
+    if (Searchtechnology(inputUrl) == false) {
+      document.getElementById("button").style = "margin-top: 0px";
+      document.getElementById("error").innerText = "this is not a url";
     } else {
-      inputUrl + "/";
-    }
+      document.getElementById("button").style = "margin-top: 20px";
+      document.getElementById("error").innerText = "";
+      inputUrl = Searchtechnology(inputUrl)[0];
+      if (inputUrl.split("")[inputUrl.length - 1] == "/") {
+      } else {
+        inputUrl = inputUrl + "/";
+      }
+      var clearLine = inputUrl.replace("//", "--");
+      var endofDomain = clearLine.indexOf("/") + 1;
+      var icon = inputUrl.substr(0, endofDomain) + "favicon.ico";
+      testImage(icon);
+      function testImage(url) {
+        var img = new Image();
+        img.onerror = img.onabort = function () {
+          scimage = "./image/globus-64.png";
+          saveData(scimage);
+        };
+        img.onload = function () {
+          scimage = icon;
+          saveData(scimage);
+        };
+        img.src = url;
+      }
 
-    var clearLine = inputUrl.replace("//", "--");
-    var endofDomain = clearLine.indexOf("/") + 1;
-    var icon = inputUrl.substr(0, endofDomain) + "favicon.ico";
-    testImage(icon);
-    function testImage(url) {
-      var img = new Image();
-      img.onerror = img.onabort = function () {
-        scimage = "./image/globus-64.png";
-        saveData(scimage);
-      };
-      img.onload = function () {
-        scimage = icon;
-        saveData(scimage);
-      };
-      img.src = url;
-    }
-
-    function saveData(img) {
-      sc[sc.length] = { name: [inputName, inputUrl, img] };
-      localStorage.setItem("shortcut", JSON.stringify(sc));
-      document.getElementById("box-input-0").value = "";
-      document.getElementById("box-input-1").value = "";
-      document.getElementById("opne-nev").style = "display: none";
-      shortcutlist();
+      function saveData(img) {
+        sc[sc.length] = { name: [inputName, inputUrl, img] };
+        localStorage.setItem("shortcut", JSON.stringify(sc));
+        document.getElementById("box-input-0").value = "";
+        document.getElementById("box-input-1").value = "";
+        document.getElementById("opne-nev").style = "display: none";
+        shortcutlist();
+      }
     }
   }
 }
-
 input.addEventListener("click", (event) => {
   inputClick();
 });
@@ -315,7 +374,7 @@ function inputlist() {
 }
 
 function courseList(value) {
-  if (settings("courselist") == true) {
+  if (settings("courselist")) {
     let localStoragecourse = localStorage["course"];
     let courselist = JSON.parse(localStoragecourse);
     courselist[courselist.length] = value;
@@ -324,8 +383,13 @@ function courseList(value) {
 }
 
 function urlLink(value) {
-  let valueEnd = [value.replace(/ /g, "+")];
-  return browser() + valueEnd;
+  let valuePlus = value.replace(/ /g, "+");
+  var valueEnd = Searchtechnology(valuePlus);
+  if (valueEnd == false) {
+    return browser() + valuePlus;
+  } else {
+    return valueEnd;
+  }
 }
 
 window.addEventListener("scroll", () => {
@@ -349,7 +413,7 @@ function start() {
       `--color-activation:` + settings("activation")[1] + `;`;
   }
 
-  if (settings("logo") == false) {
+  if (!settings("logo")) {
     document.getElementById("background-img").style = "display: none";
     document.getElementsByClassName("content")[0].style.paddingTop = "252px";
   }
@@ -370,3 +434,22 @@ document.querySelector("#content-nav").addEventListener("click", () => {
   document.getElementById("course").style = "display: none;";
   document.getElementById("input-search-bar").style = "border-radius: 10px;";
 });
+
+function Searchtechnology(value) {
+  var output = [];
+  var c = -1;
+  var urlRegex =
+    /((?:(http|https|Http|Https|rtsp|Rtsp):\/\/(?:(?:[a-zA-Z0-9\$\-\_\.\+\!\*\'\(\)\,\;\?\&\=]|(?:\%[a-fA-F0-9]{2})){1,64}(?:\:(?:[a-zA-Z0-9\$\-\_\.\+\!\*\'\(\)\,\;\?\&\=]|(?:\%[a-fA-F0-9]{2})){1,25})?\@)?)?((?:(?:[a-zA-Z0-9][a-zA-Z0-9\-]{0,64}\.)+(?:(?:aero|arpa|asia|a[cdefgilmnoqrstuwxz])|(?:biz|b[abdefghijmnorstvwyz])|(?:cat|com|coop|c[acdfghiklmnoruvxyz])|d[ejkmoz]|(?:edu|e[cegrstu])|f[ijkmor]|(?:gov|g[abdefghilmnpqrstuwy])|h[kmnrtu]|(?:info|int|i[delmnoqrst])|(?:jobs|j[emop])|k[eghimnrwyz]|l[abcikrstuvy]|(?:mil|mobi|museum|m[acdghklmnopqrstuvwxyz])|(?:name|net|n[acefgilopruz])|(?:org|om)|(?:pro|p[aefghklmnrstwy])|qa|r[eouw]|s[abcdeghijklmnortuvyz]|(?:tel|travel|t[cdfghjklmnoprtvwz])|u[agkmsyz]|v[aceginu]|w[fs]|y[etu]|z[amw]))|(?:(?:25[0-5]|2[0-4][0-9]|[0-1][0-9]{2}|[1-9][0-9]|[1-9])\.(?:25[0-5]|2[0-4][0-9]|[0-1][0-9]{2}|[1-9][0-9]|[1-9]|0)\.(?:25[0-5]|2[0-4][0-9]|[0-1][0-9]{2}|[1-9][0-9]|[1-9]|0)\.(?:25[0-5]|2[0-4][0-9]|[0-1][0-9]{2}|[1-9][0-9]|[0-9])))(?:\:\d{1,5})?)(\/(?:(?:[a-zA-Z0-9\;\/\?\:\@\&\=\#\~\-\.\+\!\*\'\(\)\,\_])|(?:\%[a-fA-F0-9]{2}))*)?(?:\b|$)/gi;
+  value.replace(urlRegex, function (url) {
+    if (url.indexOf("http") == -1) {
+      url = "https://" + url;
+    }
+    c += 1;
+    output[c] = url;
+  });
+  if (output[0] == undefined) {
+    return false;
+  } else {
+    return output;
+  }
+}

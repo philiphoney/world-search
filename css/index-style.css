@@ -74,7 +74,7 @@ html {
 }
 
 .course-a:hover {
-    background-color: #00000019;
+    background-color: #00000028;
 }
 
 .input-search {
@@ -259,6 +259,7 @@ html {
 #button-0 {
   color: var(--color-text);
   background-color: var(--color-button);
+    border: 2px solid var(--color-button);
 }
 
 #button-1 {
@@ -267,9 +268,8 @@ html {
 }
 
 #button-1:hover {
-  background-color: #4cb1ff18;
+  background-color: #c3c3c32a;
 }
-
 
 #settings {
   position: fixed;
@@ -319,3 +319,10 @@ html {
   background-color: var(--color-activation);
 }
 
+#error {
+  color: lightcoral;
+}
+
+#light-image {
+  filter: invert(100%);
+}

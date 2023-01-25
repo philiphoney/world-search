@@ -60,6 +60,10 @@ function settings(value) {
   if (value == "version") {
     return settings.version;
   }
+
+  if (value == "remove icon") {
+    return settings["remove icon"];
+  }
 }
 
 function EditSettings(value, newValue, newLink) {
@@ -67,12 +71,11 @@ function EditSettings(value, newValue, newLink) {
   let settings = JSON.parse(localStorageSettings);
 
   if (value == "browser") {
-    console.log(newValue, value);
     settings.browser = newValue;
   }
 
   if (value == "courselist") {
-    settings.courseList = newValue;
+    settings.courselist = newValue;
   }
 
   if (value == "addlink") {
@@ -109,6 +112,10 @@ function EditSettings(value, newValue, newLink) {
     settings["#n"] = newValue;
   }
 
+  if (value == "remove icon") {
+    settings["remove icon"] = newValue;
+  }
+
   localStorage.setItem("storage-of-settings", JSON.stringify(settings));
 }
 
@@ -116,11 +123,9 @@ function newSettings(value) {
   let localStorageSettings = localStorage["storage-of-settings"];
   let settingsJson = JSON.parse(localStorageSettings);
   settingsJson[value] = startSettings[value];
-  console.log(value)
   localStorage.setItem("storage-of-settings", JSON.stringify(settingsJson));
   settings(value);
 }
-
 
 function courseLow() {
   let localStoragecourse = localStorage["course"];
