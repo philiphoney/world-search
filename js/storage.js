@@ -84,7 +84,7 @@ function EditSettings(value, newValue, newLink) {
   }
 
   if (value == "decreasesearchhistorylog") {
-    settings.decreaseSearchHistoryLog = newValue;
+    settings.decreasesearchhistorylog = newValue;
   }
 
   if (value == "theme") {

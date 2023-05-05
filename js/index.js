@@ -68,7 +68,7 @@ function browser() {
   }
 
   if (settings("browser") == "Wikipedia") {
-    url = "https://de.wikipedia.org/wiki/";
+    url = "https://en.wikipedia.org/wiki/";
   }
 
   if (settings("browser") == "Ebay") {

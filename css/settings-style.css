@@ -6,7 +6,7 @@ body {
 }
 
 #background img {
-  width: 200px;
+  width: 210px;
 }
 
 #background {
@@ -33,9 +33,9 @@ header-2 {
 }
 
 #header-content {
-    display: none;
-padding-top: 10px;
-padding-left: 10px;
+  display: none;
+  padding-top: 10px;
+  padding-left: 10px;
   width: 200px;
   background-color: var(--background);
 }
@@ -71,14 +71,23 @@ hr {
 
 #storage-item-icon-0 {
     background-color: #c93c20;
+    width: 20px;
+    height: 20px;
+    font-size: 20px;
 }
 
 #storage-item-icon-1 {
     background-color: #0062ff;
+    width: 20px;
+    height: 20px;
+    font-size: 20px;
 }
 
 #storage-item-icon-2 {
     background-color: #b8babc;
+    width: 20px;
+    height: 20px;
+    font-size: 20px;
 }
 
 
