@@ -6,7 +6,7 @@
 <img src="./image/image-ws.webp" width="80%" />
 </p>
 
-<img src="https://www-assets.kolide.com/assets/inventory/device_properties/icons/firefox-addons-243e39acf3e8d11cc3b19c4fc9906fd10120f936.png" width="5%"/>
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Firefox_brand_logo%2C_2019.svg/2048px-Firefox_brand_logo%2C_2019.svg.png" width="5%"/>
 
 [Firefox addon](https://addons.mozilla.org/de/firefox/addon/world-search/)
 
