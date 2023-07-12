@@ -329,3 +329,24 @@ html {
 #light-image {
   filter: invert(100%);
 }
+
+#off {
+  position: fixed;
+  padding-left: 230px;
+  z-index: 0;
+  display: none;
+}
+
+#wifi-off  {
+  text-align: center;
+}
+
+#wifi-off img {
+  padding-top: 50px;
+  width: 100px;
+}
+
+#wifi-off span {
+  font-weight: bold;
+  color: var(--color-text-2);
+}

@@ -12,11 +12,11 @@ document.addEventListener("keydown", (event) => {
     let value = [inputvalue.replace(/ /g, "+")];
     let coursevalue = inputvalue.substr(0, inputvalue.length);
     var length = 80;
-    if (coursevalue.length > length) {
-      coursevalue = coursevalue.substr(0, length) + "...";
+    if (coursevalue.length > lengthinputlist) {
+      coursevalue = coursevalue.substr(0, lengthinputlist) + "...";
     }
     if (Searchtechnology(inputvalue) == false) {
-      window.location.href = browser() + value;
+    window.location.href = browser() + value;
       courseList(coursevalue);
     } else {
       for (let i = Searchtechnology(inputvalue).length - 1; i > -1; --i) {
@@ -26,13 +26,13 @@ document.addEventListener("keydown", (event) => {
           window.open(Searchtechnology(inputvalue)[i], '_blank');
         }
       }
-      if (Searchtechnology(inputvalue).length == 1) {
         courseList(inputvalue);
-      }
     }
     document.getElementById("input-search-bar").value = "";
   }
 });
+
+var lengthinputlist = 72;
 
 function browser() {
   if (settings("browser") == "Google") {
@@ -307,13 +307,21 @@ function inputClick() {
 
     // start list
     for (let i = course.length - 1; course.length - courseToList < i; --i) {
+      var a = ""
+      if (course[i].split("").length > lengthinputlist) {
+        a = course[i].substr(0, lengthinputlist) + "...";
+
+      } else {
+        a = course[i]
+      }
       document.getElementById("course").innerHTML +=
         `<a href="` +
         urlLink(course[i]) +
         `" class="course-a" id="course-` +
         i +
-        `">` +
-        course[i] +
+        `">`+
+        a
+        +
         `</a>`;
     }
   }
@@ -338,13 +346,20 @@ function inputlist() {
     if (input == "") {
       document.getElementById("course").innerHTML = "";
       for (let i = course.length - 1; course.length - courseToList < i; --i) {
+        var a = ""
+        if (course[i].split("").length > lengthinputlist) {
+          a = course[i].substr(0, lengthinputlist) + "...";
+  
+        } else {
+          a = course[i]
+        }
         document.getElementById("course").innerHTML +=
           `<a href="` +
           urlLink(course[i]) +
           `" class="course-a" id="course-` +
           i +
           `">` +
-          course[i] +
+          a +
           `</a>`;
       }
     } else {
@@ -354,6 +369,13 @@ function inputlist() {
         document.getElementById("input-search-bar").style =
           "border-radius: 10px;";
         for (let i = 0; i < courselength; ++i) {
+          var a = ""
+          if (course[i].split("").length > lengthinputlist) {
+            a = course[i].substr(0, lengthinputlist) + "...";
+    
+          } else {
+            a = course[i]
+          } 
           if (course[i].indexOf(input) > -1) {
             document.getElementById("course").style = "display: flex";
             document.getElementById("input-search-bar").style =
@@ -364,7 +386,7 @@ function inputlist() {
               `" class="course-a" id="course-` +
               i +
               `">` +
-              course[i] +
+              a +
               `</a>`;
           }
         }
@@ -453,3 +475,20 @@ function Searchtechnology(value) {
     return output;
   }
 }
+var a = 1
+
+// offline
+loopstart(); function loopstart() {setTimeout (time_evend, 0); function time_evend() {
+  if (window.navigator.onLine == false || a == 0) {
+    document.getElementById("off").innerHTML = `<div id="wifi-off"><img src="./image/wifi-off.svg" alt=""></br><span>The world is offline</span></div>`
+    document.getElementById("select").style = "display: none"
+    document.getElementById("off").style = "display: block"
+    document.getElementById("wallpaper-image").style = "";
+  } else {
+    document.getElementById("off").innerHTML = `<span></span>`
+    document.getElementById("select").style = "display: flex"
+    document.getElementById("wallpaper-image").style =
+    "background-image: url(" + settings("backgroundimage") + ")";
+  }
+loopstart();
+}}
