@@ -246,27 +246,8 @@ function scSave() {
       document.getElementById("button").style = "margin-top: 20px";
       document.getElementById("error").innerText = "";
       inputUrl = Searchtechnology(inputUrl)[0];
-      if (inputUrl.split("")[inputUrl.length - 1] == "/") {
-      } else {
-        inputUrl = inputUrl + "/";
-      }
-      var clearLine = inputUrl.replace("//", "--");
-      var endofDomain = clearLine.indexOf("/") + 1;
-      var icon = inputUrl.substr(0, endofDomain) + "favicon.ico";
-      testImage(icon);
-      function testImage(url) {
-        var img = new Image();
-        img.onerror = img.onabort = function () {
-          scimage = "./image/globus-64.png";
-          saveData(scimage);
-        };
-        img.onload = function () {
-          scimage = icon;
-          saveData(scimage);
-        };
-        img.src = url;
-      }
-
+      var icon = "https://www.google.com/s2/favicons?domain="+inputUrl+"&sz=128"
+      saveData(icon);
       function saveData(img) {
         sc[sc.length] = { name: [inputName, inputUrl, img] };
         localStorage.setItem("shortcut", JSON.stringify(sc));
