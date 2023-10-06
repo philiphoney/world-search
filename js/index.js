@@ -233,7 +233,6 @@ cancelButton.addEventListener("click", (event) => {
 function scSave() {
   let localStorageshortcut = localStorage["shortcut"];
   let sc = JSON.parse(localStorageshortcut);
-  var scimage = "";
 
   if (save) {
     var inputName = document.getElementById("box-input-0").value;
@@ -438,38 +437,40 @@ document.querySelector("#content-nav").addEventListener("click", () => {
   document.getElementById("input-search-bar").style = "border-radius: 10px;";
 });
 
-function Searchtechnology(value) {
-  var output = [];
-  var c = -1;
-  var urlRegex =
-    /((?:(http|https|Http|Https|rtsp|Rtsp):\/\/(?:(?:[a-zA-Z0-9\$\-\_\.\+\!\*\'\(\)\,\;\?\&\=]|(?:\%[a-fA-F0-9]{2})){1,64}(?:\:(?:[a-zA-Z0-9\$\-\_\.\+\!\*\'\(\)\,\;\?\&\=]|(?:\%[a-fA-F0-9]{2})){1,25})?\@)?)?((?:(?:[a-zA-Z0-9][a-zA-Z0-9\-]{0,64}\.)+(?:(?:aero|arpa|asia|a[cdefgilmnoqrstuwxz])|(?:biz|b[abdefghijmnorstvwyz])|(?:cat|com|coop|c[acdfghiklmnoruvxyz])|d[ejkmoz]|(?:edu|e[cegrstu])|f[ijkmor]|(?:gov|g[abdefghilmnpqrstuwy])|h[kmnrtu]|(?:info|int|i[delmnoqrst])|(?:jobs|j[emop])|k[eghimnrwyz]|l[abcikrstuvy]|(?:mil|mobi|museum|m[acdghklmnopqrstuvwxyz])|(?:name|net|n[acefgilopruz])|(?:org|om)|(?:pro|p[aefghklmnrstwy])|qa|r[eouw]|s[abcdeghijklmnortuvyz]|(?:tel|travel|t[cdfghjklmnoprtvwz])|u[agkmsyz]|v[aceginu]|w[fs]|y[etu]|z[amw]))|(?:(?:25[0-5]|2[0-4][0-9]|[0-1][0-9]{2}|[1-9][0-9]|[1-9])\.(?:25[0-5]|2[0-4][0-9]|[0-1][0-9]{2}|[1-9][0-9]|[1-9]|0)\.(?:25[0-5]|2[0-4][0-9]|[0-1][0-9]{2}|[1-9][0-9]|[1-9]|0)\.(?:25[0-5]|2[0-4][0-9]|[0-1][0-9]{2}|[1-9][0-9]|[0-9])))(?:\:\d{1,5})?)(\/(?:(?:[a-zA-Z0-9\;\/\?\:\@\&\=\#\~\-\.\+\!\*\'\(\)\,\_])|(?:\%[a-fA-F0-9]{2}))*)?(?:\b|$)/gi;
-  value.replace(urlRegex, function (url) {
-    if (url.indexOf("http") == -1) {
-      url = "https://" + url;
+function Searchtechnology(input) {
+  const urls = [];
+
+  const urlRegex = /((https?:\/\/|www\.)?[\w-]+\.[a-z]{2,}(\S*))/gi;
+  const matches = input.match(urlRegex);
+
+  if (matches) {
+    for (const match of matches) {
+      let url = match.replace(/[\)\]\}]+$/, "").trim();
+
+      if (!url.startsWith("http://") && !url.startsWith("https://")) {
+        url = "https://" + url;
+      }
+
+      urls.push(url);
     }
-    c += 1;
-    output[c] = url;
-  });
-  if (output[0] == undefined) {
-    return false;
-  } else {
-    return output;
   }
+
+  if (urls.length === 0) {
+    return false;
+  }
+
+  return urls;
 }
-var a = 1
 
 // offline
 loopstart(); function loopstart() {setTimeout (time_evend, 0); function time_evend() {
   if (window.navigator.onLine == false || a == 0) {
     document.getElementById("off").innerHTML = `<div id="wifi-off"><img src="./image/wifi-off.svg" alt=""></br><span>The world is offline</span></div>`
-    document.getElementById("select").style = "display: none"
-    document.getElementById("off").style = "display: block"
-    document.getElementById("wallpaper-image").style = "";
+    document.getElementById("select").style = "display: none;"
+    document.getElementById("off").style = "display: block;"
   } else {
     document.getElementById("off").innerHTML = `<span></span>`
-    document.getElementById("select").style = "display: flex"
-    document.getElementById("wallpaper-image").style =
-    "background-image: url(" + settings("backgroundimage") + ")";
+    document.getElementById("select").style = "display: flex;"
   }
 loopstart();
 }}
