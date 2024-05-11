@@ -19,7 +19,7 @@
 },
 
 "background": {
-  "scripts": ["/js/settings-json.js", "/js/theme.js", "js/storage.js", "js/index.js", "js/settings.js"]
+  "scripts": ["js/settings-json.js", "js/theme.js", "js/storage.js", "js/index.js", "js/settings.js"]
 },
 
 "content_security_policy": "script-src 'self' 'wasm-unsafe-eval'",
