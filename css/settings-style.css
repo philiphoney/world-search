@@ -18,6 +18,10 @@ body {
     font-size: 25px;
 }
 
+.bi {
+    color: var(--color-button);
+}
+
 header {
     position: fixed;
     width: 100%;

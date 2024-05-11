@@ -33,10 +33,6 @@ function settings(value) {
     return settings.decreasesearchhistorylog;
   }
 
-  if (value == "theme") {
-    return settings.theme;
-  }
-
   if (value == "logo") {
     return settings.logo;
   }
@@ -86,11 +82,7 @@ function EditSettings(value, newValue, newLink) {
   if (value == "decreasesearchhistorylog") {
     settings.decreasesearchhistorylog = newValue;
   }
-
-  if (value == "theme") {
-    settings.theme = newValue;
-  }
-
+  
   if (value == "logo") {
     settings.logo = newValue;
   }

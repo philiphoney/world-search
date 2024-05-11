@@ -79,11 +79,11 @@ colorGreyButton.addEventListener("click", (event) => {
 
 // Button action
 lightButton.addEventListener("click", (event) => {
-  themeLight();
+  toggleMode()
 });
 
 darkButton.addEventListener("click", (event) => {
-  themeDark();
+  toggleMode()
 });
 
 logoremoveButton.addEventListener("click", (event) => {
@@ -140,81 +140,39 @@ iconRemoveButton.addEventListener("click", (event) => {
   startTheSettings();
 });
 
-
 document.getElementById("c").innerHTML =
   "© Copyright " + new Date().getFullYear() + " World Search";
 
 function startTheSettings() {
   document.getElementsByClassName("engine")[0].innerHTML = settings("browser");
   if (settings("decreasesearchhistorylog")) {
-    document.getElementById("shl").innerHTML = "toggle_on";
-    document.getElementById("shl").className = "material-symbols-outlined on";
+    document.getElementById("shl").className = "bi bi-toggle-on on";
   } else {
-    document.getElementById("shl").innerHTML = "toggle_off";
-    document.getElementById("shl").className = "material-symbols-outlined off";
+    document.getElementById("shl").className = "bi bi-toggle-off off";
   }
 
   if (settings("logo")) {
-    document.getElementById("logoRemove").innerHTML = "toggle_on";
-    document.getElementById("logoRemove").className =
-      "material-symbols-outlined on";
+    document.getElementById("logoRemove").className = "bi bi-toggle-on on";
   } else {
-    document.getElementById("logoRemove").innerHTML = "toggle_off";
-    document.getElementById("logoRemove").className =
-      "material-symbols-outlined off";
+    document.getElementById("logoRemove").className = "bi bi-toggle-off off";
   }
 
   if (settings("backgroundimageboolean")) {
-    document.getElementById("wallpaper").innerHTML = "toggle_on";
-    document.getElementById("wallpaper").className =
-      "material-symbols-outlined on";
+    document.getElementById("wallpaper").className = "bi bi-toggle-on on";
   } else {
-    document.getElementById("wallpaper").innerHTML = "toggle_off";
-    document.getElementById("wallpaper").className =
-      "material-symbols-outlined off";
+    document.getElementById("wallpaper").className = "bi bi-toggle-off off";
   }
 
   if (settings("courselist")) {
-    document.getElementById("save-history").innerHTML = "toggle_on";
-    document.getElementById("save-history").className =
-      "material-symbols-outlined on";
+    document.getElementById("save-history").className = "bi bi-toggle-on on";
   } else {
-    document.getElementById("save-history").innerHTML = "toggle_off";
-    document.getElementById("save-history").className =
-      "material-symbols-outlined off";
+    document.getElementById("save-history").className = "bi bi-toggle-off off";
   }
 
   if (settings("remove icon")) {
-    document.getElementById("iconRemove").innerHTML = "toggle_on";
-    document.getElementById("iconRemove").className =
-      "material-symbols-outlined on";
+    document.getElementById("iconRemove").className = "bi bi-toggle-on on";
   } else {
-    document.getElementById("iconRemove").innerHTML = "toggle_off";
-    document.getElementById("iconRemove").className =
-      "material-symbols-outlined off";
-  }
-
-  if (settings("theme") == "auto") {
-  }
-
-  if (settings("theme") == "dark") {
-    document.getElementById("icon").href =
-      "../image/world-search-icon-white.webp";
-    document.getElementById("dark").style =
-      "border: 3px solid var(--color-activation);";
-    document.getElementById("background-img").src =
-      "../image/world-search-logo-white.webp";
-    document.getElementById("body").style =
-      `--color-activation:` +
-      settings("activation")[1] +
-      `; --color-input-border: #3f3f3f;  --background: #212121; --color-text: #ffffff;  --color-activating-elements: #2f313e59;  --color-button: #484747;   --color-border: #808080;   --background-2: #3a3a3a;`;
-  }
-
-  if (settings("theme") == "light") {
-    document.getElementById("light").style =
-      "border: 3px solid var(--color-activation);";
-    document.getElementById("body").style =
-      `--color-activation:` + settings("activation")[1];
+    document.getElementById("iconRemove").className = "bi bi-toggle-off off";
   }
 
   if (settings("backgroundimage") == "") {
@@ -303,6 +261,25 @@ function setImg() {
   var value = document.getElementById("image-input-value").value;
   EditSettings("backgroundimage", value);
   startTheSettings();
+}
+
+function setIconBasedOnTheme() {
+  const currentTheme = document.documentElement.getAttribute("data-cu-theme");
+  if (currentTheme === "dark") {
+    document.getElementById("background-img").src =
+      "../image/world-search-logo-white.webp";
+    document.getElementById("dark").style =
+    "border: 3px solid var(--color-activation);";
+    document.getElementById("icon").href =
+    "../image/world-search-icon-gray.webp";
+  } else {
+    document.getElementById("background-img").src =
+      "../image/world-search-logo-black.webp";
+      document.getElementById("light").style =
+      "border: 3px solid var(--color-activation);";
+      document.getElementById("icon").href =
+      "../image/world-search-icon-black.webp";
+  }
 }
 
 function storagelist(v) {

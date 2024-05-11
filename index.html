@@ -1,52 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title id="title">New Tab</title>
-    <link rel="shortcut icon" type="image" id="icon" href="../image/world-search-icon-black.webp">
+    <link
+      rel="shortcut icon"
+      type="image"
+      id="icon"
+      href="../image/world-search-icon-black.webp"
+    />
     <!-- css -->
-    <link rel="stylesheet" href="./css/index-style.css">
+    <link rel="stylesheet" href="./css/index-style.css" />
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" href="./font/bootstrap-icons.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
+    />
     <!-- js -->
     <script src="./js/settings-json.js"></script>
+    <script src="./js/theme.js" defer></script>
     <script src="./js/storage.js"></script>
-</head>
-<body id="body">
-<div class="wallpaper" id="wallpaper-image" >
-<nav id="opne-nev">
-<div id="overlay">
-<div id="box">
-<span class="box-title">Add shortcut</span>
-<div class="box-name">Name</div>
-<input id="box-input-0" type="text">
-<div class="box-name">URL</div>
-<input id="box-input-1" type="text">
-<span id="error"></span>
-<div id="button">
-<a href="##" id="button-1" value="1">Cancel</a>
-<a href="##" id="button-0">Save</a>
-</div>
-</div>
-</div>
-</nav>
-<a id="settings-a" href="/settings/index.html"><div id="settings"><span class="material-symbols-outlined">settings</span></a></div>
-<div class="center"><div class="input-search"><input id="input-search-bar" type="text" placeholder="">
-<span id="off"></span>
-<div id="course">
-</div>
-</div></div>
-<nav id="content-nav">
-<img id="img-b" src="" alt="">
-<div class="content">
-<div class="background"><img id="background-img" src="./image/world-search-logo-black.webp" alt="Logo"></div>
-</div>
-<section id="select">
-<ul id="ul"></ul>
-</section>
-<script src="./js/index.js"></script>
-</body>
-</nav>
+  </head>
+  <body id="body">
+    <div class="wallpaper" id="wallpaper-image">
+      <nav id="opne-nev">
+        <div id="overlay">
+          <div id="box">
+            <span class="box-title">Add shortcut</span>
+            <div class="box-name">Name</div>
+            <input id="box-input-0" type="text" />
+            <div class="box-name">URL</div>
+            <input id="box-input-1" type="text" />
+            <span id="error"></span>
+            <div id="button">
+              <a href="##" id="button-1" value="1">Cancel</a>
+              <a href="##" id="button-0">Save</a>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div id="settings">
+        <a id="settings-a" href="/settings/index.html">
+          <i class="bi bi-gear"></i>
+        </a>
+      </div>
+      <div class="center">
+        <div class="input-search">
+          <input id="input-search-bar" type="text" placeholder="" />
+          <span id="off"></span>
+          <div id="course"></div>
+        </div>
+      </div>
+      <nav id="content-nav">
+        <img id="img-b" src="" alt="" />
+        <div class="content">
+          <div class="background">
+            <img
+              id="background-img"
+              src="./image/world-search-logo-black.webp"
+              alt="Logo"
+            />
+          </div>
+        </div>
+        <section id="select">
+          <ul id="ul"></ul>
+        </section>
+        <script src="./js/index.js"></script>
+      </nav>
+    </div>
+  </body>
 </html>

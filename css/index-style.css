@@ -1,15 +1,4 @@
-@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css");
-body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  background-color: var(--background);
-}
-
-html {
-    height: 100%;
-}
-
-#body {
+:root {
   --color-activating-elements: #e0e0e062;
   --background: #ffffff;
   --background-2: #eeeeee;
@@ -22,6 +11,41 @@ html {
   --color-activation: #00c3ffd1;
   --color-header: #f2f2f2;
   --color-border: #b5b5b5;
+}
+
+[data-cu-theme="light"] {
+  --color-activating-elements: #e0e0e062;
+  --background: #ffffff;
+  --background-2: #eeeeee;
+  --color-text: #000000;
+  --color-text-2: #6c6c6c;
+
+  --color-input: #2c2d3900;
+  --color-input-border: #a9a9a9;
+  --color-button: #b0b0b0;
+  --color-activation: #00c3ffd1;
+  --color-header: #f2f2f2;
+  --color-border: #b5b5b5;
+}
+
+[data-cu-theme="dark"] {
+  --color-input-border: #3f3f3f;
+  --background: #212121; 
+  --color-text: #ffffff;  
+  --color-activating-elements: #2f313e59;  
+  --color-button: #484747;   
+  --color-border: #808080;   
+  --background-2: #3a3a3a;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--background);
+}
+
+html {
+    height: 100%;
 }
 
 .content {
@@ -128,13 +152,18 @@ html {
   padding-bottom: 10px;
 }
 
+#addS {
+  padding-left: 22px;
+  padding-right: 22px;
+}
+
 .banner-a {
   color: var(--color-text);
   text-decoration: none;
   justify-content: center;
   display: flex;
   padding: 20px;
-  font-size: 40px;
+  font-size: 35px;
   background-color: var(--color-activating-elements);
   border-radius: 10px;
   backdrop-filter: saturate(130%) blur(30px);
@@ -150,7 +179,8 @@ html {
 }
 
 .banner-icon {
-  padding-left: 12px;
+  padding-left: 20px;
+  font-size: 20px;
   position: absolute;
 
   
@@ -278,6 +308,7 @@ html {
   position: fixed;
   z-index: 20;
   width: 99%;
+  padding-top: 1rem;
   text-align: end;
 }
 
@@ -290,9 +321,8 @@ html {
   color: var(--color-activation);
 }
 
-#settings span {
+#settings i {
   font-size: 30px;
-  padding: 20px;
 }
 
 .wallpaper {

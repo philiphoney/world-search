@@ -1,142 +1,239 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=^, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=^, initial-scale=1.0" />
     <title>Settings</title>
-    <link rel="shortcut icon" type="image" id="icon" href="../image/world-search-icon-black.webp">
+    <link
+      rel="shortcut icon"
+      type="image"
+      id="icon"
+      href="../image/world-search-icon-black.webp"
+    />
     <!-- CSS -->
-   <link rel="stylesheet" href="../css/index-style.css">
-   <link rel="stylesheet" href="../css/settings-style.css">
-   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-   <!-- JS -->
-   <script src="../js/settings-json.js"></script>
-   <script src="../js/storage.js"></script>
-</head>
-<body id="body">
-<header>
-<div id="background"><a href="../index.html"><img id="background-img" src="../image/world-search-logo-black.webp" alt=""></a><span id="image-text">Settings</span></div>
-</header>
-<header-2>
-<div id="header-content">
-</div>
-</header-2>
-<main>
-<div id="main-content">
-<section id="design">
-<settings-title>Design</settings-title>
-<div class="theme-design">
-<a id="light" href=""><img src="../image/dark-thtme.webp" alt=""></a>
-<a id="dark" href=""><img src="../image/light-thtme.webp" alt=""></a>
-</div>
-<div class="theme-title">
-<div>Light</div>
-<div>Dark</div>
-</div>
-<div class="a-question-no-text" style="margin-top: 50px;">
-<div class="question-title">Turn off the logo on the home screen</div>
-<a href="##" id="logoremove"><span id="logoRemove" class="material-symbols-outlined off" style="font-size: 40px;">toggle_on</span></a>
-</div>
-<div class="a-question-no-text" style="margin-top: 0px;">
-<div class="question-title">Show shortcut remove button</div>
-<a href="##" id="iconremove"><span id="iconRemove" class="material-symbols-outlined off" style="font-size: 40px;">toggle_on</span></a>
-</div>
-<div class="text-title">Activation colors</div>
-<div class="ac">
-<button class="color" id="color-red"></button>
-<button class="color" id="color-blue"></button>
-<button class="color" id="color-orange"></button>
-<button class="color" id="color-yellow"></button>
-<button class="color" id="color-purple"></button>
-<button class="color" id="color-green"></button>
-<button class="color" id="color-grey"></button>
-</div>
-<div class="text-title" style="padding-top: 20px;">Background Image</div>
-<div class="a-question-no-text" style="margin-top: 20px;">
-<div class="question-title">Show wallpaper</div>
-<a href="##" id="wallpaper-toggle"><span id="wallpaper" class="material-symbols-outlined off" style="font-size: 40px;">toggle_on</span></a>
-</div>
-<div id="content-add-wallpaper">
-<div id="image-input"><input id="image-input-value" type="text"></div>
-<div id="" style="margin-top: 20px;"><a id="set-img" href="##"><span href="">Save Image</span></a></div>
-</div>
-<hr style="margin-top: 30px;">
-</section>
+    <link rel="stylesheet" href="../css/index-style.css" />
+    <link rel="stylesheet" href="../css/settings-style.css" />
+    <link rel="stylesheet" href="../font/bootstrap-icons.min.css">
+    <!-- <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    /> -->
+    <!-- JS -->
+    <script src="../js/settings-json.js"></script>
+    <script src="../js/theme.js" defer></script>
+    <script src="../js/storage.js"></script>
+  </head>
+  <body id="body">
+    <header>
+      <div id="background">
+        <a href="../index.html"
+          ><img
+            id="background-img"
+            src="../image/world-search-logo-black.webp"
+            alt="" /></a
+        ><span id="image-text">Settings</span>
+      </div>
+    </header>
+    <header-2>
+      <div id="header-content"></div>
+    </header-2>
+    <main>
+      <div id="main-content">
+        <section id="design">
+          <settings-title>Design</settings-title>
+          <div class="theme-design">
+            <a id="light" href=""
+              ><img src="../image/dark-thtme.webp" alt=""
+            /></a>
+            <a id="dark" href=""
+              ><img src="../image/light-thtme.webp" alt=""
+            /></a>
+          </div>
+          <div class="theme-title">
+            <div>Light</div>
+            <div>Dark</div>
+          </div>
+          <div class="a-question-no-text" style="margin-top: 50px">
+            <div class="question-title">
+              Turn off the logo on the home screen
+            </div>
+            <a href="##" id="logoremove"
+              ><i
+                id="logoRemove"
+                class="bi bi-toggle-off"
+                style="font-size: 40px"
+                ></i
+              ></a
+            >
+          </div>
+          <div class="a-question-no-text" style="margin-top: 0px">
+            <div class="question-title">Show shortcut remove button</div>
+            <a href="##" id="iconremove"
+              ><i
+                id="iconRemove"
+                class="bi bi-toggle-off"
+                style="font-size: 40px"
+                ></i
+              ></a
+            >
+          </div>
+          <div class="text-title">Activation colors</div>
+          <div class="ac">
+            <button class="color" id="color-red"></button>
+            <button class="color" id="color-blue"></button>
+            <button class="color" id="color-orange"></button>
+            <button class="color" id="color-yellow"></button>
+            <button class="color" id="color-purple"></button>
+            <button class="color" id="color-green"></button>
+            <button class="color" id="color-grey"></button>
+          </div>
+          <div class="text-title" style="padding-top: 20px">
+            Background Image
+          </div>
+          <div class="a-question-no-text" style="margin-top: 20px">
+            <div class="question-title">Show wallpaper</div>
+            <a href="##" id="wallpaper-toggle"
+              ><i
+                id="wallpaper"
+                class="bi bi-toggle-off"
+                style="font-size: 40px"
+                ></i
+              ></a
+            >
+          </div>
+          <div id="content-add-wallpaper">
+            <div id="image-input">
+              <input id="image-input-value" type="text" />
+            </div>
+            <div id="" style="margin-top: 20px">
+              <a id="set-img" href="##"><span href="">Save Image</span></a>
+            </div>
+          </div>
+          <hr style="margin-top: 30px" />
+        </section>
 
-<section id="browser">
-<settings-title>Browser</settings-title>
-<div class="a-question-no-text" style="padding-top: 20px;">
-<div class="question-title">Search engine</div>
-<a id="e-se">
-<select name="Search engine" id="select-engine"> 
-<option class="engine">Subjects</option>
-<option value="Google">Google</option>
-<option value="Bing">Bing</option>
-<option value="Ecosia">Ecosia</option>
-<option value="Duckduckgo">Duckduckgo</option>
-<option value="Baidu">Baidu</option>
-<option value="Yandex">Yandex</option>
-<option value="Ask">Ask</option>
-<option value="Search Brave">Search Brave</option>
-<option value="Wikipedia">Wikipedia</option>
-<option value="Ebay">Ebay</option>
-<option value="Amazon">Amazon</option>
-</select>
-</a>
-</div>
-<hr style="margin-top: 30px;">
-</section>
+        <section id="browser">
+          <settings-title>Browser</settings-title>
+          <div class="a-question-no-text" style="padding-top: 20px">
+            <div class="question-title">Search engine</div>
+            <a id="e-se">
+              <select name="Search engine" id="select-engine">
+                <option class="engine">Subjects</option>
+                <option value="Google">Google</option>
+                <option value="Bing">Bing</option>
+                <option value="Ecosia">Ecosia</option>
+                <option value="Duckduckgo">Duckduckgo</option>
+                <option value="Baidu">Baidu</option>
+                <option value="Yandex">Yandex</option>
+                <option value="Ask">Ask</option>
+                <option value="Search Brave">Search Brave</option>
+                <option value="Wikipedia">Wikipedia</option>
+                <option value="Ebay">Ebay</option>
+                <option value="Amazon">Amazon</option>
+              </select>
+            </a>
+          </div>
+          <hr style="margin-top: 30px" />
+        </section>
 
-<section id="privacy">
-<settings-title style="display: flex; margin-bottom: 20px;"><i class="bi bi-shield-shaded" style="font-size: 25px; padding-top: 4px;"></i>Privacy</settings-title>
-<div class="a-question-no-text">
-<div class="question-title">Save the search history</div>
-<a href="##" id="save-history-toggle"><span id="save-history" class="material-symbols-outlined off" style="font-size: 40px;">toggle_on</span></a>
-</div>
-<hr style="margin-top: 10px;">
-</section>
+        <section id="privacy">
+          <settings-title style="display: flex; margin-bottom: 20px"
+            ><i
+              class="bi bi-shield-shaded"
+              style="font-size: 25px; padding-top: 4px; padding-right: 10px;"
+            ></i
+            >Privacy</settings-title
+          >
+          <div class="a-question-no-text">
+            <div class="question-title">Save the search history</div>
+            <a href="##" id="save-history-toggle"
+              ><i
+                id="save-history"
+                class="bi bi-toggle-off"
+                style="font-size: 40px"
+                ></i
+              ></a
+            >
+          </div>
+          <hr style="margin-top: 10px" />
+        </section>
 
-<section id="storage">
-<settings-title>Storage</settings-title>
-<div id="used">Used: <span id="e-used"></span></div>
-<div id="storage-content">
-<div id="storage-item"><div id="storage-item-icon-0" class="bi bi-card-list"></div><p id="storage-item-p">Search history log</p><div class="e-model"><span id="e-course">0 KB</span></div></div>
-<div id="storage-item"><div id="storage-item-icon-1" class="bi bi-folder-plus"></div><p id="storage-item-p">Shortcut</p><div class="e-model"><span id="e-shortcut">0 KB</span></div></div>
-<div id="storage-item"><div id="storage-item-icon-2" class="bi bi-three-dots"></div><p id="storage-item-p">System</p><div class="e-model"><span id="e-system">0 KB</span></div></div>
-</div>
-<div class="a-question">
-<div class="question-title">Decrease Search History Log</div>
-<div class="question-text"><i class="bi bi-exclamation-triangle-fill"></i> This setting can cause leaks when off</div>
-<a href="##" id="shl-button"><span id="shl" class="material-symbols-outlined off" style="font-size: 40px;">toggle_on</span></a>
-</div>
-<div class="a-question-no-text" style="padding-top: 0px;">
-<div class="question-title">Clear history log</div>
-<div id=""><a id="chl-reset" href="##"><span href="">Clear history log</span></a></div>
-</div>
-<hr style="margin-top: 40px;">
-</section>
+        <section id="storage">
+          <settings-title>Storage</settings-title>
+          <div id="used">Used: <span id="e-used"></span></div>
+          <div id="storage-content">
+            <div id="storage-item">
+              <div id="storage-item-icon-0" class="bi bi-card-list"></div>
+              <p id="storage-item-p">Search history log</p>
+              <div class="e-model"><span id="e-course">0 KB</span></div>
+            </div>
+            <div id="storage-item">
+              <div id="storage-item-icon-1" class="bi bi-folder-plus"></div>
+              <p id="storage-item-p">Shortcut</p>
+              <div class="e-model"><span id="e-shortcut">0 KB</span></div>
+            </div>
+            <div id="storage-item">
+              <div id="storage-item-icon-2" class="bi bi-three-dots"></div>
+              <p id="storage-item-p">System</p>
+              <div class="e-model"><span id="e-system">0 KB</span></div>
+            </div>
+          </div>
+          <div class="a-question">
+            <div class="question-title">Decrease Search History Log</div>
+            <div class="question-text">
+              <i class="bi bi-exclamation-triangle-fill"></i> This setting can
+              cause leaks when off
+            </div>
+            <a href="##" id="shl-button"
+              ><i
+                id="shl"
+                class="bi bi-toggle-off"
+                style="font-size: 40px"
+                ></i
+              ></a
+            >
+          </div>
+          <div class="a-question-no-text" style="padding-top: 0px">
+            <div class="question-title">Clear history log</div>
+            <div id="">
+              <a id="chl-reset" href="##"
+                ><span href="">Clear history log</span></a
+              >
+            </div>
+          </div>
+          <hr style="margin-top: 40px" />
+        </section>
 
-<section id="about-world-search">
-<settings-title>About World Search</settings-title>
-<div id="about-content">
-<p id="v"></p>
-<p id="c"></p>
-</div>
-<hr style="margin-top: 60px;">
-</section>
+        <section id="about-world-search">
+          <settings-title>About World Search</settings-title>
+          <div id="about-content">
+            <p id="v"></p>
+            <p id="c"></p>
+          </div>
+          <hr style="margin-top: 60px" />
+        </section>
 
-<section id="danger-zone">
-<settings-title>Danger Zone</settings-title>
-<div class="a-question-no-text" style="padding-top: 20px;">
-<div class="question-title">Reset to default settings</div>
-<div id="e-reset"><a id="reset" class="reset" href="##"><span href="">Reset to default</span></a></div>
-<div id="e-reset-2"><a class="reset" href="##"><span id="reset-1" href="">Reset to default</span><span id="censel" href="##" >Censel</span></a></div>
-</div>
-</section>
-</div>
-</main>
-<a id="test" style="display: none;" href=""></a>
-<script src="../js/settings.js"></script>
-</body>
+        <section id="danger-zone">
+          <settings-title>Danger Zone</settings-title>
+          <div class="a-question-no-text" style="padding-top: 20px">
+            <div class="question-title">Reset to default settings</div>
+            <div id="e-reset">
+              <a id="reset" class="reset" href="##"
+                ><span href="">Reset to default</span></a
+              >
+            </div>
+            <div id="e-reset-2">
+              <a class="reset" href="##"
+                ><span id="reset-1" href="">Reset to default</span
+                ><span id="censel" href="##">Censel</span></a
+              >
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+    <a id="test" style="display: none" href=""></a>
+    <script src="../js/settings.js"></script>
+  </body>
 </html>

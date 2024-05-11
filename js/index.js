@@ -16,17 +16,16 @@ document.addEventListener("keydown", (event) => {
       coursevalue = coursevalue.substr(0, lengthinputlist) + "...";
     }
     if (Searchtechnology(inputvalue) == false) {
-    window.location.href = browser() + value;
+      window.location.href = browser() + value;
       courseList(coursevalue);
     } else {
       for (let i = Searchtechnology(inputvalue).length - 1; i > -1; --i) {
         if (Searchtechnology(inputvalue).length == 1) {
           window.location.href = Searchtechnology(inputvalue)[i];
         } else {
-          window.open(Searchtechnology(inputvalue)[i], '_blank');
+          window.open(Searchtechnology(inputvalue)[i], "_blank");
         }
       }
-        courseList(inputvalue);
     }
     document.getElementById("input-search-bar").value = "";
   }
@@ -112,36 +111,38 @@ var shortcutL = 0;
 function shortcutlist() {
   let localStorageshortcut = localStorage["shortcut"];
   let sc = JSON.parse(localStorageshortcut);
-  var removeIcon = ""
+  var removeIcon = "";
   shortcutL = sc.length;
   document.getElementById("ul").innerHTML = "";
   if (!settings("remove icon")) {
-    removeIcon = "display: none"
+    removeIcon = "display: none";
   } else {
-   removeIcon = ""
+    removeIcon = "";
   }
 
   for (let i = 0; i < sc.length; ++i) {
     var title = sc[i].name[0];
-    var imageID = ""
+    var imageID = "";
     if (title.length > 7) {
       title = title.substr(0, 7) + "...";
     }
-    if (sc[i].name[2] == "./image/globus-64.png" && settings("theme") == "dark") {
-      imageID = "light-image"
-    }
+
     document.getElementById("ul").innerHTML +=
       `<li id="li-` +
       i +
       `">
         <div class="banner">
-        <a id="remove" style="`+removeIcon+`" href="#n` +
+        <a id="remove" style="` +
+      removeIcon +
+      `" href="#n` +
       i +
-      `" class="material-symbols-outlined banner-icon">bookmark_remove</a>
+      `" class="banner-icon"><i class="bi bi-bookmark-dash"></i></a>
         <a class="banner-a" id="href-0" href="` +
       sc[i].name[1] +
       `">
-        <img id="`+imageID+`" src="` +
+        <img id="` +
+      imageID +
+      `" src="` +
       sc[i].name[2] +
       `" alt="">
         </a>
@@ -152,7 +153,7 @@ function shortcutlist() {
   }
   document.getElementById(
     "ul"
-  ).innerHTML += `<li><div class="banner"><a class="banner-a" id="addS" href="##"><div class="material-symbols-outlined">add_circle</div></a></div><span>Shortcut</span></li>`;
+  ).innerHTML += `<li><div class="banner"><a class="banner-a" id="addS" href="##"><i class="bi bi-plus-circle"></i></a></div><span>Shortcut</span></li>`;
 
   addshortcutButton = document.getElementById("addS");
   addshortcutButton.addEventListener("click", (event) => {
@@ -181,16 +182,20 @@ function hreftest() {
     location.href = "";
   }
 }
-
-function dark() {
-  document.getElementById("background-img").src =
-    "./image/world-search-logo-white.webp";
-  document.getElementById("body").style =
-    `--color-activation:` +
-    settings("activation")[1] +
-    `; --color-input-border: #3f3f3f;  --background: #212121; --color-text: #ffffff;  --color-activating-elements: #2f313e59;  --color-button: #484747;   --color-border: #808080;   --background-2: #3a3a3a;`;
+function setIconBasedOnTheme() {
+  const currentTheme = document.documentElement.getAttribute("data-cu-theme");
+  if (currentTheme === "dark") {
+    document.getElementById("background-img").src =
+      "./image/world-search-logo-white.webp";
+      document.getElementById("icon").href =
+      "./image/world-search-icon-gray.webp";
+  } else {
+    document.getElementById("background-img").src =
+    "./image/world-search-logo-black.webp";
+    document.getElementById("icon").href =
+    "./image/world-search-icon-black.webp";
+  }
 }
-
 // add shortcut
 var save = false;
 function addshortcut() {
@@ -245,7 +250,8 @@ function scSave() {
       document.getElementById("button").style = "margin-top: 20px";
       document.getElementById("error").innerText = "";
       inputUrl = Searchtechnology(inputUrl)[0];
-      var icon = "https://www.google.com/s2/favicons?domain="+inputUrl+"&sz=128"
+      var icon =
+        "https://www.google.com/s2/favicons?domain=" + inputUrl + "&sz=128";
       saveData(icon);
       function saveData(img) {
         sc[sc.length] = { name: [inputName, inputUrl, img] };
@@ -287,21 +293,19 @@ function inputClick() {
 
     // start list
     for (let i = course.length - 1; course.length - courseToList < i; --i) {
-      var a = ""
+      var a = "";
       if (course[i].split("").length > lengthinputlist) {
         a = course[i].substr(0, lengthinputlist) + "...";
-
       } else {
-        a = course[i]
+        a = course[i];
       }
       document.getElementById("course").innerHTML +=
         `<a href="` +
         urlLink(course[i]) +
         `" class="course-a" id="course-` +
         i +
-        `">`+
-        a
-        +
+        `">` +
+        a +
         `</a>`;
     }
   }
@@ -326,12 +330,11 @@ function inputlist() {
     if (input == "") {
       document.getElementById("course").innerHTML = "";
       for (let i = course.length - 1; course.length - courseToList < i; --i) {
-        var a = ""
+        var a = "";
         if (course[i].split("").length > lengthinputlist) {
           a = course[i].substr(0, lengthinputlist) + "...";
-  
         } else {
-          a = course[i]
+          a = course[i];
         }
         document.getElementById("course").innerHTML +=
           `<a href="` +
@@ -349,13 +352,12 @@ function inputlist() {
         document.getElementById("input-search-bar").style =
           "border-radius: 10px;";
         for (let i = 0; i < courselength; ++i) {
-          var a = ""
+          var a = "";
           if (course[i].split("").length > lengthinputlist) {
             a = course[i].substr(0, lengthinputlist) + "...";
-    
           } else {
-            a = course[i]
-          } 
+            a = course[i];
+          }
           if (course[i].indexOf(input) > -1) {
             document.getElementById("course").style = "display: flex";
             document.getElementById("input-search-bar").style =
@@ -406,15 +408,6 @@ start();
 shortcutlist();
 courseLow();
 function start() {
-  if (settings("theme") == "dark") {
-    dark();
-    document.getElementById("icon").href =
-      "./image/world-search-icon-white.webp";
-  } else {
-    document.getElementById("body").style =
-      `--color-activation:` + settings("activation")[1] + `;`;
-  }
-
   if (!settings("logo")) {
     document.getElementById("background-img").style = "display: none";
     document.getElementsByClassName("content")[0].style.paddingTop = "252px";
@@ -463,14 +456,20 @@ function Searchtechnology(input) {
 }
 
 // offline
-loopstart(); function loopstart() {setTimeout (time_evend, 0); function time_evend() {
-  if (window.navigator.onLine == false || a == 0) {
-    document.getElementById("off").innerHTML = `<div id="wifi-off"><img src="./image/wifi-off.svg" alt=""></br><span>The world is offline</span></div>`
-    document.getElementById("select").style = "display: none;"
-    document.getElementById("off").style = "display: block;"
-  } else {
-    document.getElementById("off").innerHTML = `<span></span>`
-    document.getElementById("select").style = "display: flex;"
-  }
 loopstart();
-}}
+function loopstart() {
+  setTimeout(time_evend, 0);
+  function time_evend() {
+    if (window.navigator.onLine == false) {
+      document.getElementById(
+        "off"
+      ).innerHTML = `<div id="wifi-off"><img src="./image/wifi-off.svg" alt=""></br><span>The world is offline</span></div>`;
+      document.getElementById("select").style = "display: none;";
+      document.getElementById("off").style = "display: block;";
+    } else {
+      document.getElementById("off").innerHTML = `<span></span>`;
+      document.getElementById("select").style = "display: flex;";
+    }
+    loopstart();
+  }
+}
