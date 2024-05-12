@@ -180,6 +180,8 @@ function startTheSettings() {
     document.getElementById("image-input-value").value =
       settings("backgroundimage");
   }
+
+  document.getElementById("body").style =`--color-activation:` +settings("activation")[1] +`;`;
 }
 
 function shl() {

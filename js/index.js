@@ -107,6 +107,8 @@ var removeButton;
 
 var shortcutL = 0;
 
+document.getElementById("body").style =`--color-activation:` +settings("activation")[1] +`;`;
+
 // Shortcut list
 function shortcutlist() {
   let localStorageshortcut = localStorage["shortcut"];

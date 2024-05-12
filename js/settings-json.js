@@ -2,7 +2,7 @@ let course = []
 let scl = []
 
 let = system = {
-    "version": "v1.3.0"
+    "version": "v1.3.1"
 }
 
 let startSettings = {

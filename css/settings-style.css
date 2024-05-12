@@ -270,11 +270,16 @@ hr {
 }
 
 .ac button {
+    z-index: 100;
     margin: 10px;
     margin-left: 0px;
-    padding: 10px;
+    padding: 15px;
     border-radius: 100%;
     border: 0px;
+}
+
+.ac button:hover {
+    cursor: pointer;
 }
 
 #color-red {
